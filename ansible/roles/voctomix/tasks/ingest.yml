@@ -1,0 +1,37 @@
+---
+- name: Git checkout v-outcasts for newest ingest.py
+  ansible.builtin.git:
+    repo: 'https://github.com/CarlFK/voctomix-outcasts.git'
+    dest: "/home/{{ user_name }}/voctomix-outcasts"
+    depth: 1
+    single_branch: true
+    accept_hostkey: true
+    force: true
+
+- name: Create a symbolic link to new ingest.py
+  ansible.builtin.file:
+    src: "/home/{{ user_name }}/voctomix-outcasts/ingest.py"
+    dest: /usr/bin/voctomix-ingest
+    state: link
+
+- name: Install ingest systemd units
+  ansible.builtin.template:
+    src: templates/videoteam-ingest.service.j2
+    dest: /etc/systemd/user/videoteam-ingest-{{ item.0 }}.service
+  with_indexed_items: "{{ ingest_sources }}"
+  notify: Reload-systemd
+
+- name: Enable voctomix systemd units
+  ansible.builtin.systemd_service:
+
+    name: "videoteam-ingest-{{ item.0 }}"
+
+    scope: user
+    enabled: yes
+    state: started
+    daemon_reload: true
+    daemon_reexec: true
+
+  with_indexed_items: "{{ ingest_sources }}"
+  when: not skip_unit_test
+

@@ -1,0 +1,17 @@
+# Ansible Managed
+
+[Unit]
+Description=Voctomix live stream encoder
+After=videoteam-voctocore.service
+Requires=videoteam-voctocore.service
+StartLimitIntervalSec=0
+Conflicts=xlogout.target
+
+[Service]
+ExecStart=/usr/local/bin/videoteam-stream
+Restart=always
+RestartSec=1s
+Nice=10
+
+[Install]
+WantedBy=videoteam-voctocore.target

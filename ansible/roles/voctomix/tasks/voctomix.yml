@@ -1,0 +1,73 @@
+---
+- name: Install voctomix & related packages
+  ansible.builtin.apt:
+    update_cache: yes
+    name:
+      - voctomix
+      - voctomix-outcasts
+      - gstreamer1.0-libav
+      - gstreamer1.0-pulseaudio
+      - gstreamer1.0-pipewire
+        # - gstreamer1.0-gl
+      - systemd
+
+- name: Create voctomix config dir
+  ansible.builtin.file:
+    path: /etc/voctomix
+    state: directory
+
+- name: Configure voctomix
+  ansible.builtin.template:
+    src: templates/{{ item }}.j2
+    dest: /etc/voctomix/{{ item }}
+  with_items:
+    - voctocore.ini
+
+- name: Create recording directory
+  ansible.builtin.file:
+    state: directory
+    dest: /srv/video/{{ org }}/{{ show }}/dv/{{ room_name }}
+    recurse: true
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+
+- name: Push the recording scripts
+  ansible.builtin.copy:
+    src: files/videoteam-{{ item }}
+    dest: /usr/local/bin/videoteam-{{ item }}
+    mode: "0755"
+  with_items:
+    - record-timestamp-ts
+    - record-timestamp-mp4
+
+- name: Install voctocore systemd unit
+  ansible.builtin.copy:
+    src: files/systemd/videoteam-voctocore.service
+    dest: /etc/systemd/user/videoteam-voctocore.service
+  notify: Reload-systemd
+
+- name: Install voctomix recording systemd units
+  ansible.builtin.template:
+    src: templates/videoteam-{{ item }}.j2
+    dest: /etc/systemd/user/videoteam-{{ item }}
+  with_items:
+    - cutlist.service
+    - record.service
+  notify: Reload-systemd
+
+- name: Enable voctomix systemd units
+  ansible.builtin.systemd_service:
+    name: videoteam-{{ item }}
+    scope: global
+    enabled: true
+    state: started
+    daemon_reload: true
+    daemon_reexec: true
+  with_items:
+    - voctocore.service
+    - record.service
+    - cutlist.service
+  when: not skip_unit_test
+  tags:
+    - enable_sd
+

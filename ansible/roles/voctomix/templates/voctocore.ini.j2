@@ -1,0 +1,41 @@
+# {{ ansible_managed }}
+
+[mix]
+videocaps=video/x-raw,format=I420,width=1280,height=720,framerate={{ voctomix.framerate | int }}/1,pixel-aspect-ratio=1/1,colorimetry=bt709
+audiocaps=audio/x-raw,format=S16LE,channels=2,layout=interleaved,rate=48000
+
+; tcp-ports will be 10000,10001,etc.
+sources={{ ingest_sources | map(attribute="name") | join(",") }}
+{% if audiosource is defined %}
+audiosource={{ audiosource }}
+{% endif %}
+
+[side-by-side-equal]
+; defaults to 1% of the video width
+;gutter=12
+;ypos=200
+
+[side-by-side-preview]
+;asize=1024x576
+;apos=12/12
+;bsize=320x180
+;bpos=948/528
+
+[picture-in-picture]
+;pipsize=320x180
+;pippos=948/528
+
+[previews]
+; disable if ui & server run on the same computer and can exchange uncompressed video frames
+enabled={{ voctomix.previews }}
+deinterlace=false
+
+; default to mix-videocaps, only applicable if enabled=true
+; you can change the framerate and the width/height, but nothing else
+videocaps=video/x-raw,width=640,height=360,framerate={{ voctomix.framerate | int }}/1
+
+[stream-blanker]
+enabled=false
+
+[mirrors]
+enabled={{ voctomix.mirrors }}

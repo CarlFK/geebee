@@ -1,0 +1,19 @@
+#!/bin/sh
+# files will be $dest_dir/$date/$time.ts
+
+dest_dir=$1
+segment_time=1800  # 30 min
+
+mkdir -p $dest_dir/$(date +%Y-%m-%d)
+
+exec ffmpeg \
+    -nostdin -y \
+    -analyzeduration 10000 \
+    -thread_queue_size 512 \
+    -i tcp://localhost:11000?timeout=3000000 \
+    -aspect 16:9 \
+    -map 0:v -c:v:0 libx264 -crf 18 -maxrate 3M -bufsize 4M \
+    -map 0:a -c:a aac -b:a 128k -ac:a 2 -ar:a 48000 \
+    -flags +global_header \
+        -f segment -segment_time $segment_time \
+         -strftime 1 "$dest_dir/%Y-%m-%d/%H_%M_%S.mp4"

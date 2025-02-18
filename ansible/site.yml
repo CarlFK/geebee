@@ -1,0 +1,4 @@
+---
+- hosts: bg
+  roles:
+  - voctomix

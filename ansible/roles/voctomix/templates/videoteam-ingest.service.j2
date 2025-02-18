@@ -1,0 +1,45 @@
+# {{ ansible_managed }}
+
+[Unit]
+Description=Voctomix ingest source {{ item.0 }}: {{ item.1.description }}
+After=videoteam-voctocore.service
+Requires=videoteam-voctocore.service
+StartLimitIntervalSec=1
+# Conflicts=videoteam-voctocore.target
+
+[Service]
+ExecStart=/usr/bin/voctomix-ingest -v \
+{% if 'src' in item.1 %}
+  --src '{{ item.1['src'] }}' \
+{% else %}
+    {% if item.1.video_source is defined -%}
+      --video-source "{{ item.1.video_source }}" \
+        {% if item.1.video_attribs is defined -%}
+          --video-attribs '{{ item.1.video_attribs }}' \
+        {% endif -%}
+        {% if item.1.video_delay is defined -%}
+          --video-delay {{ item.1.video_delay }} \
+        {% endif -%}
+        {% if item.1.video_elements is defined -%}
+          --video-elements '{{ item.1.video_elements }}' \
+        {% endif -%}
+    {% endif -%}
+    {% if item.1.audio_source is defined -%}
+      --audio-source "{{ item.1.audio_source }}" \
+        {% if item.1.audio_attribs is defined -%}
+          --audio-attribs '{{ item.1.audio_attribs }}' \
+        {% endif -%}
+        {% if item.1.audio_delay is defined -%}
+          --audio-delay {{ item.1.audio_delay }} \
+        {% endif -%}
+        {% if item.1.audio_elements is defined -%}
+          --audio-elements '{{ item.1.audio_elements }}' \
+        {% endif -%}
+    {% endif -%}
+{% endif %}
+  --port {{ item.1.port }}
+Restart=always
+RestartSec=1s
+
+[Install]
+WantedBy=videoteam-voctocore.target

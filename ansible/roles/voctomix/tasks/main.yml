@@ -1,0 +1,4 @@
+---
+- {include_tasks: voctomix.yml, tags: [enable_sd,]}
+- ansible.builtin.include_tasks: ingest.yml
+- ansible.builtin.include_tasks: scripts.yml

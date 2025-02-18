@@ -1,0 +1,15 @@
+# Ansible Managed
+
+[Unit]
+Description=Voctomix core Daemon
+# Conflicts=xlogout.target
+Wants=videoteam-ingest-1.target
+
+[Service]
+ExecStart=/usr/bin/voctocore -v
+Restart=always
+RestartSec=1s
+Nice=0
+
+[Install]
+WantedBy=default.target

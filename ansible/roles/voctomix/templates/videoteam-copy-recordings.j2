@@ -1,0 +1,97 @@
+#!/usr/bin/python3
+# {{ ansible_managed }}
+
+import argparse
+import os
+import pathlib
+import subprocess
+import time
+
+SOURCE = '/srv/video/{{ org }}/{{ show }}/dv/{{ room_name }}/'
+DEST = '{{ storage_username }}@{{ nfs_server }}:{{ rsync_dstpath }}'
+OPTIONS = ['--archive', '--progress', '--partial', '--stats']
+{% for item in rsync_excludes %}
+OPTIONS += ['--exclude', '{{ item }}']
+{% endfor %}
+
+{% if rsync_sshopts %}
+OPTIONS += ['-e', 'ssh {{rsync_sshopts}}']
+{% endif %}
+
+
+def get_args():
+
+    p = argparse.ArgumentParser('Copy recordings off the mixer box.')
+
+    p.add_argument('--dest',
+        default=DEST,
+        help='rsync destination.')
+
+    p.add_argument('--nice', action='store_true',
+        help='Run with idle ionice, and nice of 10.')
+
+    p.add_argument(
+        '--live', action='store_true',
+        help='Try to be safe for syncing during recording. '
+             'Ignore recently modified files (within 1 minute). '
+             'Implies --nice.')
+
+    p.add_argument(
+        '--pause', action='store_true',
+        help='Stop recording before copying, then start again.')
+
+    args = p.parse_args()
+
+    return args
+
+
+def find_current(dir_):
+    """
+    find file(s) currently being written to. (update < 60 seconds ago.)
+    """
+
+    now = time.time()
+    for dirpath, dirnames, filenames in os.walk(dir_):
+        for filename in filenames:
+            path = pathlib.Path(dirpath) / filename
+            if now - path.stat().st_mtime < 60:
+                yield filename
+
+
+def main():
+
+    args = get_args()
+
+    if args.live:
+        args.nice = True
+
+    cmd = []
+
+    if args.nice:
+        cmd += ['nice', 'ionice', '-c', '3']
+
+    cmd += ['rsync'] + OPTIONS
+
+    if args.live:
+        cmd += ['--exclude={}'.format(name) for name in find_current(SOURCE)]
+        cmd += ['--bwlimit=10m']
+
+    cmd += ['./', args.dest]
+
+    if args.pause:
+        print('Pausing recording')
+        subprocess.check_call(
+            ('systemctl', '--user', 'stop', 'videoteam-record.service'))
+
+    try:
+        print('Running', cmd)
+        subprocess.check_call(cmd, cwd=SOURCE)
+    finally:
+        if args.pause:
+            print('Resuming recording')
+            subprocess.check_call(
+                ('systemctl', '--user', 'start', 'videoteam-record.service'))
+
+
+if __name__ == '__main__':
+    main()

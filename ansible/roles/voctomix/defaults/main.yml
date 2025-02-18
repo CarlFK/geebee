@@ -1,0 +1,64 @@
+---
+user_name: videoteam
+debian_version: bookworm
+
+org: debian
+show: debconf
+room_name: room1
+
+# Use this to set the default audio source
+# audiosource: Cam1
+
+# Local frequency setting, in Hz
+# This can be either 50 or 60Hz
+frequency: 50
+
+voctomix:
+  display_system: gl
+  framerate: "{{ frequency / 2 }}"
+  previews: true
+  mirrors: false
+  auto_copy_recordings: true
+  autostart_gui: true
+# loop_url: http://example.net/loop.tar.xz
+
+recording_format: gst-oc
+
+# ingest_sources:
+# - description: "uvc cam on /dev/video2"
+#   name: Webcam
+#   src: "v4l2src device=/dev/video2 ! queue ! decodebin ! \
+#      videoconvert ! videorate ! videoscale ! {videocaps} ! \
+#      mux. audiotestsrc wave=ticks freq=330 ! {audiocaps} ! \
+#      queue ! matroskamux name=mux !"
+#   port: 10002
+# - description: "test pattern: viz and beep"
+#   name: zappy
+#   video_source: spacescope
+#   video_attribs:
+#   video_elements: yadif ! videoconvert ! videorate ! videoscale
+#   audio_source: test
+#   audio_attribs: wave=ticks
+#   audio_elements:
+#   audio_delay: 1000 # optional
+#   port: 10003
+
+nfs_server: storage1
+storage_username: videodata
+rsync_excludes: []
+rsync_sshopts: ""
+rsync_dstpath: "/srv/{{ nfs_server }}/video/{{ org }}/{{ show }}/dv/{{ room_name }}/"
+
+# video_disk: /dev/sdb1
+
+# check the frequency setting on the camera
+# make sure it matches what's the frequency of the local power
+# use BlackmagicDesktopVideoSetup to see what the camera is sending
+# list of all mode IDs: check 'gst-inspect-1.0 decklinkvideosrc'
+frequency_parameters:
+  50:
+    mode: 17  # 720p50
+  60:
+    mode: 18  # 720p59.94
+
+skip_unit_test: false

@@ -1,0 +1,16 @@
+# {{ ansible_managed }}
+
+[Unit]
+Description=Voctomix cutlist
+After=videoteam-voctocore.service
+Requires=videoteam-voctocore.service
+StartLimitIntervalSec=0
+Conflicts=xlogout.target
+
+[Service]
+ExecStart=/usr/bin/voctomix-generate-cut-list --file=/srv/video/{{ org }}/{{ show }}/dv/{{ room_name }}/cutlist.log
+Restart=always
+RestartSec=1s
+
+[Install]
+WantedBy=videoteam-voctocore.target

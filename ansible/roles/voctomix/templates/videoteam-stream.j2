@@ -1,0 +1,25 @@
+#!/bin/sh
+# {{ ansible_managed }}
+
+# Origin: https://github.com/xfxf/video-scripts/blob/master/michael/youtube-live.sh
+
+exec gst-launch-1.0 \
+	tcpclientsrc "host=localhost" port=15000 \
+	! matroskademux name=demux \
+	! queue \
+{% if streaming.rtmp.vaapi %}
+	! vaapih264enc keyframe-period={{ streaming.hq_config.keyframe_period }} max-bframes=0 bitrate={{ streaming.hq_config.video_bitrate }} \
+	! h264parse config-interval=2 \
+{% else %}
+	! x264enc bitrate={{ streaming.hq_config.video_bitrate }} byte-stream=false key-int-max={{ streaming.hq_config.keyframe_period }} bframes=0 aud=true tune=zerolatency \
+{% endif %}
+	! "video/x-h264,profile=main" \
+	! flvmux streamable=true name=mux \
+	! rtmpsink location="{{ streaming.rtmp.location }} live=1" demux. \
+	! queue \
+{% if not streaming.mix_channels %}
+	! audiochannelmix right-to-right=0 left-to-right=1 \
+{% endif %}
+	! audioconvert \
+	! "audio/x-raw,channels=1" \
+	! voaacenc bitrate={{ streaming.hq_config.audio_bitrate }} ! mux.

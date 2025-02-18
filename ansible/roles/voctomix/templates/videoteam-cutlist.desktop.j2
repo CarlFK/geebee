@@ -1,0 +1,10 @@
+# {{ ansible_managed }}
+
+[Desktop Entry]
+Version=1.0
+Name=Follow voctomix cut list
+Exec=xfce4-terminal --title="cut list" --geometry=20x5 --hide-menubar --command="tail -f /srv/video/{{ org }}/{{ show }}/dv/{{ room_name }}/cutlist.log"
+Icon=gtk-cut
+Type=Application
+Terminal=false
+Categories=AudioVideo;
