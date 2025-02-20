@@ -5,10 +5,11 @@
     name:
       - voctomix
       - voctomix-outcasts
-      - gstreamer1.0-libav
-      - gstreamer1.0-pulseaudio
-      - gstreamer1.0-pipewire
-        # - gstreamer1.0-gl
+      - gstreamer1.0-libcamera
+      # - gstreamer1.0-libav
+      # - gstreamer1.0-pulseaudio
+      # - gstreamer1.0-pipewire
+      # - gstreamer1.0-gl
       - systemd
 
 - name: Create voctomix config dir
@@ -44,7 +45,7 @@
   ansible.builtin.copy:
     src: files/systemd/videoteam-voctocore.service
     dest: /etc/systemd/user/videoteam-voctocore.service
-  notify: Reload-systemd
+  notify: Systemd-reload
 
 - name: Install voctomix recording systemd units
   ansible.builtin.template:
@@ -53,7 +54,7 @@
   with_items:
     - cutlist.service
     - record.service
-  notify: Reload-systemd
+  notify: Systemd-reload
 
 - name: Enable voctomix systemd units
   ansible.builtin.systemd_service:

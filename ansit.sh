@@ -8,6 +8,7 @@ host=${1:-pi}
 ansible-playbook \
     ansible/site.yml --inventory-file inventory/hosts \
     --user root --limit ${host} -vvv \
+    --tags udev
 
     # --tags enable_sd
 

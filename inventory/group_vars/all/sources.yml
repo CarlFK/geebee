@@ -1,13 +1,31 @@
 ---
+usb_sources:
+
+  - name: grabber
+    description: "MACROSILICON WARRKY USB 3.0"
+    subsystem: "video4linux"
+    idVendor: "345f"
+    idProduct: "2131"
+    index: 0
+    devname: "v4l/grabber"
+
+  - name: mic
+    description: "Samson Technologies Corp. GoMic compact condenser mic"
+    subsystem: "sound"
+    idVendor: "17a0"
+    idProduct: "0305"
+    devname: "snd/mic"
 
 ingest_sources:
+
   - description: "Camera and mic audio"
     name: Camera
     video_source: "libcamerasrc name=videosrc ! video/x-raw,colorimetry=bt709,format=NV12,interlace-mode=progressive,width=1280,height=720"
     audio_source: "alsasrc device=hw:GoMic provide-clock=false slave-method=re-timestamp name=audiosrc ! queue max-size-time=4000000000"
     port: 10000
+
   - description: "grabber with grabber audio"
     name: Grabber
-    video_source: "v4l2src device=/dev/video0 name=videosrc ! queue max-size-time=4000000000 ! image/jpeg,width=1280,height=720 ! jpegdec"
+    video_source: "v4l2src device=/dev/{{ usb_sources.0.devname }} name=videosrc ! queue max-size-time=4000000000 ! image/jpeg,width=1280,height=720 ! jpegdec"
     audio_source: "alsasrc device=hw:W30 provide-clock=false slave-method=re-timestamp name=audiosrc ! queue max-size-time=4000000000"
     port: 10001

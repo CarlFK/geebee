@@ -14,4 +14,4 @@ RestartSec=1s
 Nice=10
 
 [Install]
-WantedBy=videoteam-voctocore.target
+WantedBy=videoteam-voctocore.service

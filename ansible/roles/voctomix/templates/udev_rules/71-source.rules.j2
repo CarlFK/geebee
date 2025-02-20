@@ -1,0 +1,10 @@
+# /etc/udev/rules.d/71-usb_source.rules
+
+# SUBSYSTEM=="{{ item.subsystem }}", ATTRS{idVendor}=="{{ item.idVendor }}", ATTRS{idProduct}=="{{ item.idProduct }}", ATTR{index}=="0", SYMLINK+="{{ item.devname }}"
+
+SUBSYSTEM=="{{ item.subsystem }}", ATTRS{idVendor}=="{{ item.idVendor }}", ATTRS{idProduct}=="{{ item.idProduct }}", \
+{% if item.index is defined %}
+ ATTR{index}=="{{ item.index }}", \
+{% endif %}
+SYMLINK+="{{ item.devname }}"
+

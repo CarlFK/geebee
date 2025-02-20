@@ -1,5 +1,14 @@
 ---
-- name: Reload-systemd
+- name: Systemd-reload
   ansible.builtin.systemd:
     daemon_reload: true
+  when: not skip_unit_test
+
+- name: Udev-reload
+  ansible.builtin.shell:
+    cmd: |
+      udevadm control --reload-rules
+      udevadm trigger --action=change \
+                        --subsystem-match=video4linux
+      udevadm settle
   when: not skip_unit_test
