@@ -11,6 +11,7 @@
       # - gstreamer1.0-pipewire
       # - gstreamer1.0-gl
       - systemd
+      - vim
 
 - name: Create voctomix config dir
   ansible.builtin.file:
@@ -43,8 +44,11 @@
 
 - name: Install voctocore systemd unit
   ansible.builtin.copy:
-    src: files/systemd/videoteam-voctocore.service
-    dest: /etc/systemd/user/videoteam-voctocore.service
+    src: files/systemd/videoteam-voctocore.{{ item }}
+    dest: /etc/systemd/user/videoteam-voctocore.{{ item }}
+  with_items:
+    - service
+    - target
   notify: Systemd-reload
 
 - name: Install voctomix recording systemd units
@@ -60,10 +64,22 @@
   ansible.builtin.systemd_service:
     name: videoteam-{{ item }}
     scope: global
-    enabled: true
-    state: started
     daemon_reload: true
     daemon_reexec: true
+  with_items:
+    - voctocore.service
+    - record.service
+    - cutlist.service
+  when: not skip_unit_test
+  tags:
+    - enable_sd
+
+- name: Enable voctomix systemd units
+  ansible.builtin.systemd_service:
+    name: videoteam-{{ item }}
+    scope: global
+    enabled: true
+    state: started
   with_items:
     - voctocore.service
     - record.service

@@ -5,7 +5,7 @@ Description=Voctomix cutlist
 After=videoteam-voctocore.service
 Requires=videoteam-voctocore.service
 StartLimitIntervalSec=0
-Conflicts=xlogout.target
+# Conflicts=xlogout.target
 
 [Service]
 ExecStart=/usr/bin/voctomix-generate-cut-list --file=/srv/video/{{ org }}/{{ show }}/dv/{{ room_name }}/cutlist.log

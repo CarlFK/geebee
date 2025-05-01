@@ -1,4 +1,10 @@
 ---
+- name: Install git
+  ansible.builtin.apt:
+    update_cache: yes
+    name:
+      - git
+
 - name: Git checkout v-outcasts for newest ingest.py
   ansible.builtin.git:
     repo: 'https://github.com/CarlFK/voctomix-outcasts.git'
@@ -29,6 +35,18 @@
   notify: Systemd-reload
   tags:
     - udev
+    - enable_sd
+
+- name: Enable voctomix systemd units
+  ansible.builtin.systemd_service:
+    name: "videoteam-ingest-{{ item.0 }}"
+    scope: user
+    daemon_reload: true
+    daemon_reexec: true
+  with_indexed_items: "{{ ingest_sources }}"
+  when: not skip_unit_test
+  tags:
+    - enable_sd
 
 - name: Enable voctomix systemd units
   ansible.builtin.systemd_service:
@@ -36,7 +54,5 @@
     scope: user
     enabled: true
     state: started
-    daemon_reload: true
-    daemon_reexec: true
   with_indexed_items: "{{ ingest_sources }}"
   when: not skip_unit_test
