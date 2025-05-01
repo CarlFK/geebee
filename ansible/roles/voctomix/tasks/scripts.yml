@@ -8,6 +8,6 @@
 
 - name: Script to send commands to voctocore
   ansible.builtin.copy:
-    src: files/voctocore-cmds.sh
+    src: files/voctocore-cmds.py
     dest: /usr/local/bin/voctocore-cmds
     mode: "0755"
