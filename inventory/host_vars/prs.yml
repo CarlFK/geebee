@@ -1,0 +1,34 @@
+---
+
+user_name: videoteam
+
+usb_sources:
+
+  - name: grabber
+    description: "MACROSILICON WARRKY USB 3.0"
+    subsystem: "video4linux"
+    idVendor: "345f"
+    idProduct: "2131"
+    index: 0
+    devname: "v4l/grabber"
+
+ingest_sources:
+
+  - description: "cam 1"
+    name: Grabber
+    video_source: "v4l2src device=/dev/video0 name=videosrc ! queue max-size-time=4000000000 ! image/jpeg,width=1280,height=720 ! jpegdec"
+    audio_source: "test"
+    port: 10000
+
+  - description: "cam 2"
+    name: Grabber
+    video_source: "v4l2src device=/dev/video2 usb_sources.0.devname }} name=videosrc ! queue max-size-time=4000000000 ! image/jpeg,width=1280,height=720 ! jpegdec"
+    audio_source: "test"
+    port: 10000
+
+  - description: "cam 3"
+    name: Grabber
+    video_source: "v4l2src device=/dev/video4 usb_sources.0.devname }} name=videosrc ! queue max-size-time=4000000000 ! image/jpeg,width=1280,height=720 ! jpegdec"
+    audio_source: "test"
+    port: 10000
+

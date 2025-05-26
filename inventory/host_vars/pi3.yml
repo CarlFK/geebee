@@ -1,0 +1,16 @@
+---
+usb_sources: []
+
+ingest_sources:
+
+  - description: "test1"
+    name: bars
+    video_source: "test"
+    audio_source: "test"
+    port: 10000
+
+  - description: "test2"
+    name: sweep
+    video_source: "videotestsrc pattern=ball motion=hsweep animation-mode=wall-time flip=true is-live=true"
+    audio_source: "audiotestsrc is-live=true"
+    port: 10001
