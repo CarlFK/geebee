@@ -2,6 +2,28 @@
 
 Manage and configure the voctomix live editing software.
 
+sequence:
+
+Boot:
+voctocore
+voctocore-cmds.py - set core to PnP
+videoteam-record-timestamp-ts/mp4 - start saving whatever to disk.
+cutlist.service - if something tells core to cut, log it.
+
+As hardware is detected/available:
+hardware:
+  camera, usb mic
+  hdmi video, hdmi audio
+
+ingest.py (s)
+each ingest is a pair of A/V, probably should not launch until both up?
+
+When gui is available (login?):
+sink-display.sh - show the mixed streams.  or black if they have not started.
+
+When a thumbdrive is plugged in: (later.  Lets get recordings working first)
+videoteam-copy-recordings.sh
+
 audio device names:
 
 pi@pi:~ $ arecord -l
