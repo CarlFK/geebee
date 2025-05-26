@@ -33,14 +33,15 @@
     owner: "{{ user_name }}"
     group: "{{ user_name }}"
 
-- name: Push the recording scripts
+- name: Push the static scripts
   ansible.builtin.copy:
-    src: files/videoteam-{{ item }}
+    src: files/systemd/videoteam-{{ item }}
     dest: /usr/local/bin/videoteam-{{ item }}
     mode: "0755"
   with_items:
     - record-timestamp-ts
     - record-timestamp-mp4
+    - local-monitor.sh
 
 - name: Install voctocore systemd unit
   ansible.builtin.copy:
@@ -48,7 +49,6 @@
     dest: /etc/systemd/user/videoteam-voctocore.{{ item }}
   with_items:
     - service
-    - target
   notify: Systemd-reload
 
 - name: Install voctomix recording systemd units

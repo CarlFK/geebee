@@ -1,0 +1,18 @@
+# {{ ansible_managed }}
+
+[Unit]
+Description=Voctomix show mix on screen
+After=videoteam-voctocore.service
+Requires=videoteam-voctocore.service
+StartLimitIntervalSec=0
+Conflicts=xlogout.target
+
+[Service]
+ExecStart=/usr/local/bin/videoteam-local-monitor.sh
+KillMode=mixed
+KillSignal=SIGINT
+Restart=always
+RestartSec=1s
+
+[Install]
+WantedBy=videoteam-voctocore.service
