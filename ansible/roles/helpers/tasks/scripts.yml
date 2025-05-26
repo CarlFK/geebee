@@ -1,0 +1,10 @@
+---
+- name: Script to start/stop all the services
+  ansible.builtin.template:
+    src: templates/control-all-the-things.j2
+    dest: /usr/local/bin/{{ item }}-all-the-things
+    mode: "0755"
+  with_items:
+    - stop
+    - start
+    - status

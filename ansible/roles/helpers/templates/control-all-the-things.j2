@@ -1,0 +1,66 @@
+#!/bin/sh
+# {{ ansible_managed }}
+
+set -euf
+
+{% if 'hdmi2usbd' in serial_terminal|default({}) %}
+	echo sudo systemctl {{ item }} hdmi2usbmond
+	sudo systemctl {{ item }} hdmi2usbmond || true
+{% endif %}
+
+{% if item != 'stop' %}
+if systemctl --user list-unit-files --state=enabled | grep -q '^videoteam-voctocore.service'; then
+	echo systemctl --user {{ item }} videoteam-voctocore
+	systemctl --user {{ item }} videoteam-voctocore || true
+	{% if item == 'start' %}
+	echo -n 'Waiting for voctocore'
+	i=0
+	vocto_started=false
+	while [ $i -lt 10 ]; do
+		# Wait 10 seconds for the voctocore listener to appear on port 9999
+		sockets=$(ss -ltnOH '( sport = 9999 )' | wc -l)
+		if [ $sockets -ne 1 ]; then
+			echo -n .
+			sleep 1
+		else
+			echo ' voctocore has started.'
+			vocto_started=true
+			break
+		fi
+		i=$(( i + 1 ))
+	done
+	if [ $vocto_started != "true" ]; then
+		echo ' voctocore has not started, continuing anyway.'
+	fi
+	{% endif %}
+fi
+{% endif %}
+
+systemctl list-unit-files --state=enabled \
+	| sed -nre 's/^(videoteam-.*).(path|service).*/\1.service/ p' \
+	| while read service; do
+	echo sudo systemctl {{ item }} $service
+	sudo systemctl {{ item }} $service || true
+done
+
+systemctl --user list-unit-files --state=enabled \
+	| grep -v '^videoteam-voctocore.service' \
+	| sed -nre 's/^(videoteam-.*.service).*/\1/ p' \
+	| sed -e 's/@\./@0./' \
+	| while read service; do
+	echo systemctl --user {{ item }} $service
+	systemctl --user {{ item }} $service || true
+done
+
+{% if item == 'start' %}
+
+voctocore-set-loop
+{% elif item == 'stop' %}
+
+if systemctl --user list-unit-files --state=enabled | grep -q '^videoteam-voctocore.service'; then
+	echo waiting for a bit...
+	sleep 3s
+	echo systemctl --user stop videoteam-voctocore
+	systemctl --user stop videoteam-voctocore || true
+fi
+{% endif %}
