@@ -22,14 +22,14 @@
 
 - name: Install ingest systemd units
   ansible.builtin.template:
-    src: templates/videoteam-ingest.service.j2
+    src: templates/systemd/videoteam-ingest.service.j2
     dest: /etc/systemd/user/videoteam-ingest-{{ item.0 }}.service
   with_indexed_items: "{{ ingest_sources }}"
   notify: Systemd-reload
 
 - name: Install systemd usb_dev .path
   ansible.builtin.template:
-    src: templates/videoteam-ingest.path.j2
+    src: templates/systemd/videoteam-ingest.path.j2
     dest: /etc/systemd/user/videoteam-ingest-{{ item.0 }}.path
   with_indexed_items: "{{ usb_sources }}"
   notify: Systemd-reload

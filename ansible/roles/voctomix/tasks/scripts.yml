@@ -2,12 +2,12 @@
 
 - name: Script to copy raw video files somewhere
   ansible.builtin.template:
-    src: templates/videoteam-copy-recordings.j2
+    src: templates/systemd/videoteam-copy-recordings.j2
     dest: /usr/local/bin/videoteam-copy-recordings
     mode: "0755"
 
 - name: Script to send commands to voctocore
   ansible.builtin.copy:
-    src: files/voctocore-cmds.py
-    dest: /usr/local/bin/voctocore-cmds
+    src: files/systemd/videoteam-voctocore-cmds.py
+    dest: /usr/local/bin/vidoeteam-voctocore-cmds
     mode: "0755"
