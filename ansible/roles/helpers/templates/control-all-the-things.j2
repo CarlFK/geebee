@@ -54,7 +54,6 @@ done
 
 {% if item == 'start' %}
 
-voctocore-set-loop
 {% elif item == 'stop' %}
 
 if systemctl --user list-unit-files --state=enabled | grep -q '^videoteam-voctocore.service'; then
