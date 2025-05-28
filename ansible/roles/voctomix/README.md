@@ -6,7 +6,7 @@ sequence:
 
 Boot:
 voctocore
-voctocore-cmds.py - set core to PnP
+voctocore-cmds.py - set core to PnP (this isn't happening)
 videoteam-record-timestamp-ts/mp4 - start saving whatever to disk.
 cutlist.service - if something tells core to cut, log it.
 
@@ -17,6 +17,15 @@ hardware:
 
 ingest.py (s)
 each ingest is a pair of A/V, probably should not launch until both up?
+
+Hmm... camera can be static, like on orangePi /dev/v4l/by-path/platform-rkisp1-vir1-video-index0
+OrangePi /etc/udev/rules.d/88-rockchip-camera.rules
+ACTION=="add", SUBSYSTEM=="video4linux", ENV{ID_V4L_PRODUCT}=="*_mainpath", SYMLINK+="video-camera0"
+so ...
+
+which is paired up with usb mic alsa name: device=hw:GoMic
+
+grabber is usb video and audio. audio alsa name: device=hw:W30
 
 When gui is available (login?):
 sink-display.sh - show the mixed streams.  or black if they have not started.
