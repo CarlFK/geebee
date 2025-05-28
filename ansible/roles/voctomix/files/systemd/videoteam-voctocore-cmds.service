@@ -1,0 +1,14 @@
+# Ansible Managed
+
+[Unit]
+Description=Voctomix startup commands
+After=videoteam-voctocore.service
+Requires=videoteam-voctocore.service
+StartLimitIntervalSec=0
+
+[Service]
+ExecStart=/usr/local/bin/vidoeteam-voctocore-cmds.py
+Nice=10
+
+[Install]
+WantedBy=videoteam-voctocore.service

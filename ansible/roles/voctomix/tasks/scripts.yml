@@ -6,8 +6,28 @@
     dest: /usr/local/bin/videoteam-copy-recordings
     mode: "0755"
 
+
 - name: Script to send commands to voctocore
   ansible.builtin.copy:
     src: files/systemd/videoteam-voctocore-cmds.py
-    dest: /usr/local/bin/vidoeteam-voctocore-cmds
+    dest: /usr/local/bin/vidoeteam-voctocore-cmds.py
     mode: "0755"
+
+- name: Install voctocore-cmds systemd units
+  ansible.builtin.template:
+    src: files/systemd/videoteam-voctocore-cmds.service
+    dest: /etc/systemd/user/videoteam-voctocore-cmds.service
+  notify: Systemd-reload
+
+- name: Enable voctocore-cmds systemd units
+  ansible.builtin.systemd_service:
+    name: "videoteam-voctocore-cmds"
+    scope: user
+    daemon_reload: true
+    daemon_reexec: true
+
+- name: Enable voctocore-cmds systemd units
+  ansible.builtin.systemd_service:
+    name: "videoteam-voctocore-cmds"
+    scope: user
+    enabled: true
