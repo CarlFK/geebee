@@ -4,9 +4,11 @@
 
 core=127.0.0.1
 
-gst-launch-1.0 \
+exec gst-launch-1.0 \
     tcpclientsrc host=${core} port=11000 !\
     matroskademux !\
     videoconvert !\
-    waylandsink sync=false
+    xvimagesink
+
+    # waylandsink sync=false
 
