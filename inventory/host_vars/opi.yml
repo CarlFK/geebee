@@ -11,6 +11,6 @@ ingest_sources:
 
   - description: "grabber with grabber audio"
     name: Grabber
-    video_source: "v4l2src device=/dev/{{ usb_sources.0.devname }} name=videosrc ! queue max-size-time=4000000000 ! image/jpeg,width=1280,height=720 ! jpegdec"
+    video_source: "v4l2src device=/dev/{{ usb_sources.1.devname }} name=videosrc ! queue max-size-time=4000000000 ! image/jpeg,width=1280,height=720 ! jpegdec"
     audio_source: "alsasrc device=hw:W30 provide-clock=false slave-method=re-timestamp name=audiosrc ! queue max-size-time=4000000000"
     port: 10001
