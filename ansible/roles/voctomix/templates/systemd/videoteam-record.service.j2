@@ -16,8 +16,7 @@ ExecStart=/usr/local/bin/videoteam-record-timestamp-ts /srv/video/{{ org }}/{{ s
 {% elif recording_format == 'h.264' %}
 ExecStart=/usr/local/bin/videoteam-record-timestamp-mp4 /srv/video/{{ org }}/{{ show }}/dv/{{ room_name }}
 {% elif recording_format == 'gst-oc' %}
-# ExecStart=/usr/local/bin/videoteam-record-mixed-av.sh /srv/video/{{ org }}/{{ show }}/dv/{{ room_name }}
-ExecStart=/home/pi/voctomix-outcasts/record-mixed-av.sh /srv/video/{{ org }}/{{ show }}/dv/{{ room_name }}
+ExecStart=/home/{{ user_name }}/voctomix-outcasts/record-mixed-av.sh /srv/video/{{ org }}/{{ show }}/dv/{{ room_name }}
 {% endif %}
 KillMode=mixed
 KillSignal=SIGINT
