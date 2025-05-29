@@ -1,0 +1,9 @@
+---
+
+- name: No password for sudo group
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/nopass
+    state: present
+    create: yes
+    line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+    validate: /usr/sbin/visudo -cf %s

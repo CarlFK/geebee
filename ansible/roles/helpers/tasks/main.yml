@@ -1,2 +1,3 @@
 ---
 - ansible.builtin.include_tasks: scripts.yml
+- ansible.builtin.include_tasks: sudoers.yml
