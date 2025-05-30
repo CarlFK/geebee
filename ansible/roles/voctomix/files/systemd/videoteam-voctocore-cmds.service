@@ -4,11 +4,12 @@
 Description=Voctomix startup commands
 After=videoteam-voctocore.service
 Requires=videoteam-voctocore.service
-StartLimitIntervalSec=0
 
 [Service]
+Type=simple
+ExecStartPre=/usr/bin/sleep 10
 ExecStart=/usr/local/bin/vidoeteam-voctocore-cmds.py
 Nice=10
 
 [Install]
-WantedBy=videoteam-voctocore.service
+WantedBy=default.target

@@ -8,6 +8,7 @@ StartLimitIntervalSec=0
 Conflicts=xlogout.target
 
 [Service]
+Type=exec
 {% if recording_timezone is defined %}
 Environment=TZ={{ recording_timezone }}
 {% endif %}
@@ -24,4 +25,4 @@ Restart=always
 RestartSec=1s
 
 [Install]
-WantedBy=videoteam-voctocore.service
+WantedBy=default.target

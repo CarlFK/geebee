@@ -4,6 +4,7 @@
 Description=Voctomix core Daemon
 
 [Service]
+Type=exec
 ExecStart=/usr/bin/voctocore -v
 Restart=always
 RestartSec=1s
