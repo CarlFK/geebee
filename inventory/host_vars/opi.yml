@@ -5,14 +5,14 @@ ingest_sources:
 
   - description: "Camera and mic audio"
     name: Camera
-      # video_source: "v4l2src device=/dev/video-camera0 io-mode=4 name=videosrc ! video/x-raw,format=NV12,width=1280,height=720,framerate=30/1,interlace-mode=progressive"
-    video_source: "testvideosrc pattern=ball motion=hsweep animation-mode=wall-time flip=true is-live=true"
+    video_source: "v4l2src device=/dev/video-camera0 io-mode=4 name=videosrc ! video/x-raw,format=NV12,width=1280,height=720,framerate=30/1,interlace-mode=progressive"
+    # video_source: "videotestsrc pattern=ball motion=hsweep animation-mode=wall-time flip=true is-live=true"
     audio_source: "alsasrc device=hw:GoMic provide-clock=false slave-method=re-timestamp name=audiosrc ! queue max-size-time=4000000000"
     port: 10000
 
   - description: "grabber with grabber audio"
     name: Grabber
-    # video_source: "v4l2src device=/dev/{{ usb_sources.1.devname }} name=videosrc ! queue max-size-time=4000000000 ! image/jpeg,width=1280,height=720 ! jpegdec"
-    video_source: "testvideosrc"
+    video_source: "v4l2src device=/dev/{{ usb_sources.1.devname }} name=videosrc ! queue max-size-time=4000000000 ! image/jpeg,width=1280,height=720 ! jpegdec"
+      # video_source: "videotestsrc"
     audio_source: "alsasrc device=hw:W30 provide-clock=false slave-method=re-timestamp name=audiosrc ! queue max-size-time=4000000000"
     port: 10001
