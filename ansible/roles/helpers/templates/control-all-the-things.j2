@@ -3,11 +3,6 @@
 
 set -euf
 
-{% if 'hdmi2usbd' in serial_terminal|default({}) %}
-	echo sudo systemctl {{ item }} hdmi2usbmond
-	sudo systemctl {{ item }} hdmi2usbmond || true
-{% endif %}
-
 {% if item != 'stop' %}
 if systemctl --user list-unit-files --state=enabled | grep -q '^videoteam-voctocore.service'; then
 	echo systemctl --user {{ item }} videoteam-voctocore

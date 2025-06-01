@@ -6,10 +6,13 @@ host=${1:-opi}
 # export ANSIBLE_STRATEGY=mitogen_linear
 
 ansible-playbook \
+    -vvv \
     ansible/site.yml --inventory-file inventory/hosts \
-    --user root --limit ${host} -vvv \
+    --user root --limit ${host} \
 
-    # --tags enable_sd
+    # --tags lcd
+
+    # --tags ingest
 
     # --tags udev
 

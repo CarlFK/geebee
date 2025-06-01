@@ -1,0 +1,13 @@
+---
+- name: Install overlayroot
+  ansible.builtin.apt:
+    update_cache: yes
+    name:
+      - overlayroot
+
+- name: Enable overlayroot
+  ansible.builtin.lineinfile:
+    path: /etc/overlayroot.conf
+    state: present
+    regexp: 'overlayroot='
+    line: 'overlayroot=tmpfs'

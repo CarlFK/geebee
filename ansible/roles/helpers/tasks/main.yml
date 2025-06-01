@@ -1,3 +1,6 @@
 ---
+- ansible.builtin.include_tasks: sugar.yml
+- {ansible.builtin.include_tasks: opi.yml, tags: [lcd]}
 - ansible.builtin.include_tasks: scripts.yml
 - ansible.builtin.include_tasks: sudoers.yml
+- ansible.builtin.include_tasks: overlayroot.yml

@@ -1,0 +1,13 @@
+---
+
+- name: Install handy packages
+  ansible.builtin.apt:
+    update_cache: yes
+    name:
+      - vim
+      - ack
+      - git
+      - tmux
+      - pmount
+      - dcfldd
+      - python3-lxml

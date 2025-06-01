@@ -1,0 +1,38 @@
+---
+- name: LCD and Camera dts
+  ansible.builtin.lineinfile:
+    path: /boot/orangepiEnv.txt
+    state: present
+    regexp: '^overlays='
+    line: 'overlays=dmc opi5max-cam1 opi5ultra-lcd'
+  tags:
+    - lcd
+
+- name: rotate screen concole and touch
+  ansible.builtin.lineinfile:
+    path: /boot/orangepiEnv.txt
+    state: present
+    regexp: '^extraargs='
+    line: 'extraargs=cma=128M fbcon=rotate:1'
+  tags:
+    - lcd
+
+- name: rotate screen gui display
+  ansible.builtin.copy:
+    src: files/xfce4/displays.xml
+    dest: /home/{{ user_name }}/.config/xfce4/xfconf/xfce-perchannel-xml/displays.xml
+  tags:
+    - lcd
+
+- name: rotate screen again
+  community.general.xml:
+    path: /home/{{ user_name }}/.config/xfce4/xfconf/xfce-perchannel-xml/displays.xml
+    xpath: "{{ item }}"
+    attribute: "value"
+    value: "270"
+    pretty_print: true
+  with_items:
+    - "/channel[@name='displays']/property[@name='Default']/property[@name='DSI-1']/property[@name='Rotation']"
+    - "/channel[@name='displays']/property[@name='Fallback']/property[@name='DSI-1']/property[@name='Rotation']"
+  tags:
+    - lcd
