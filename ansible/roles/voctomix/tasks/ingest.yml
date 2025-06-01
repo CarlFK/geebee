@@ -4,6 +4,7 @@
     update_cache: yes
     name:
       - git
+      - voctomix-outcasts
 
 - name: Git checkout v-outcasts for newest ingest.py
   ansible.builtin.git:
