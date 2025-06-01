@@ -1,4 +1,22 @@
 ---
+- name: Spew boot messages
+  ansible.builtin.lineinfile:
+    path: /boot/orangepiEnv.txt
+    state: present
+    regexp: '^verbosity='
+    line: 'verbosity=7'
+  tags:
+    - lcd
+
+- name: No boot logo
+  ansible.builtin.lineinfile:
+    path: /boot/orangepiEnv.txt
+    state: present
+    regexp: '^bootlogo='
+    line: 'bootlogo=false'
+  tags:
+    - lcd
+
 - name: LCD and Camera dts
   ansible.builtin.lineinfile:
     path: /boot/orangepiEnv.txt
@@ -7,6 +25,7 @@
     line: 'overlays=dmc opi5max-cam1 opi5ultra-lcd'
   tags:
     - lcd
+
 
 - name: rotate screen concole and touch
   ansible.builtin.lineinfile:

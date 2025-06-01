@@ -1,0 +1,10 @@
+---
+- name: Disable Docker
+  ansible.builtin.systemd_service:
+    name: "{{ item }}"
+    enabled: false
+  with_items:
+    - docker.socket
+    - docker.service
+    - containerd.service
+  when: not skip_unit_test
