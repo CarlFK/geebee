@@ -4,8 +4,8 @@
 Description=Voctomix show mix on screen
 After=videoteam-voctocore.service
 Requires=videoteam-voctocore.service
-StartLimitIntervalSec=0
-Conflicts=xlogout.target
+# StartLimitIntervalSec=0
+# Conflicts=xlogout.target
 
 [Service]
 ExecStart=/usr/local/bin/videoteam-local-monitor.sh
@@ -15,4 +15,4 @@ Restart=always
 RestartSec=1s
 
 [Install]
-WantedBy=graphical.target
+WantedBy=default.target

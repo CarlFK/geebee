@@ -26,6 +26,9 @@
     dest: /etc/systemd/user/videoteam-ingest-{{ item.0 }}.service
   with_indexed_items: "{{ ingest_sources }}"
   notify: Systemd-reload
+  tags:
+    - enable_sd
+    - ingest
 
 - name: Install systemd usb_dev .path
   ansible.builtin.template:
@@ -40,18 +43,22 @@
 - name: Enable voctomix systemd units
   ansible.builtin.systemd_service:
     name: "videoteam-ingest-{{ item.0 }}"
-    scope: user
+    scope: global
     daemon_reload: true
     daemon_reexec: true
   with_indexed_items: "{{ ingest_sources }}"
   when: not skip_unit_test
   tags:
     - enable_sd
+    - ingest
 
 - name: Enable voctomix systemd units
   ansible.builtin.systemd_service:
     name: "videoteam-ingest-{{ item.0 }}.path"
-    scope: user
+    scope: global
     enabled: true
   with_indexed_items: "{{ ingest_sources }}"
   when: not skip_unit_test
+  tags:
+    - enable_sd
+    - ingest

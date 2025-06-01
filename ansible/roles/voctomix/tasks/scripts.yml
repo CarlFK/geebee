@@ -21,12 +21,12 @@
 - name: Enable voctocore-cmds systemd unit
   ansible.builtin.systemd_service:
     name: "videoteam-voctocore-cmds"
-    scope: user
+    scope: global
     enabled: true
 
 - name: Start voctocore-cmds systemd units
   ansible.builtin.systemd_service:
     name: "videoteam-voctocore-cmds"
-    scope: user
+    scope: global
     daemon_reload: true
     daemon_reexec: true
