@@ -1,0 +1,30 @@
+---
+- name: install sidedoor packages
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - sidedoor
+
+- name: install sidedoor conf
+  ansible.builtin.template:
+    src: sidedoor.j2
+    dest: /etc/default/sidedoor
+
+- name: deploy sidedoor user private key
+  ansible.builtin.copy:
+    content: "{{ sd_ssh_private_key }}"
+    dest: /etc/sidedoor/id_rsa
+    owner: sidedoor
+    group: sidedoor
+    mode: a-rwx,u=rw
+  no_log: true
+
+- name: remote server's key
+  ansible.builtin.copy:
+    content: "{{ sd_remote_key }}"
+    dest: /etc/sidedoor/known_hosts
+    owner: sidedoor
+    group: sidedoor
+    mode: a-rwx,u=rw
+  no_log: true

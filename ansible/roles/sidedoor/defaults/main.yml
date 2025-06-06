@@ -1,0 +1,11 @@
+---
+sd_remote_user: user
+sd_remote_server: example.com
+
+# sd_remote_key: 'get with: ssh-keyscan -t ecdsa -H example.com'
+# sd_ssh_private_key: 'replace me with id_rsa'
+
+sd_port: 4022
+sd_more_options: ''
+
+skip_unit_test: yes
