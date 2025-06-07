@@ -11,7 +11,9 @@ ansible-playbook \
     --inventory-file inventory/hosts \
     --vault-password-file ~/.ansible-vault \
     --user root --limit ${host} \
-    --extra-vars=user_name=orangepi
+    --tags test_voc
+
+    # --extra-vars=user_name=orangepi
 
     # --tags lcd
 
