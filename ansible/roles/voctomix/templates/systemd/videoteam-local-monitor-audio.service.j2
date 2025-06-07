@@ -1,0 +1,17 @@
+# {{ ansible_managed }}
+
+[Unit]
+Description=Voctomix play mixed audio on local sound hardware
+After=videoteam-voctocore.service
+Requires=videoteam-voctocore.service
+
+[Service]
+ExecStartPre=/usr/bin/sleep 4
+ExecStart=/usr/local/bin/videoteam-local-monitor-audio.sh 127.0.0.1 {{ audio_device }}
+KillMode=mixed
+KillSignal=SIGINT
+Restart=always
+RestartSec=1s
+
+[Install]
+WantedBy=default.target

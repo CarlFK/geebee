@@ -39,3 +39,9 @@ enabled=false
 
 [mirrors]
 enabled={{ voctomix.mirrors }}
+
+{% for item in ingest_sources %}
+[source.{{ item.name }}]
+volume = 1
+
+{% endfor %}

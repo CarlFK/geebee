@@ -41,7 +41,8 @@
   with_items:
     - record-timestamp-ts
     - record-timestamp-mp4
-    - local-monitor.sh
+    - local-monitor-video.sh
+    - local-monitor-audio.sh
 
 - name: Install voctocore systemd unit
   ansible.builtin.copy:
@@ -58,29 +59,33 @@
   with_items:
     - record.service
     - cutlist.service
-    - local-monitor.service
+    - local-monitor-video.service
+    - local-monitor-audio.service
   notify: Systemd-reload
 
 - name: Enable voctomix systemd units
   ansible.builtin.systemd_service:
     name: videoteam-{{ item }}
-    scope: global
+    scope: user
     daemon_reload: true
     daemon_reexec: true
   with_items:
     - voctocore.service
     - record.service
     - cutlist.service
-    - local-monitor.service
+    - local-monitor-video.service
+    - local-monitor-audio.service
 
 - name: Start voctomix systemd units
   ansible.builtin.systemd_service:
     name: videoteam-{{ item }}
-    scope: global
+    scope: user
     enabled: true
     state: started
+    daemon_reload: true
   with_items:
     - voctocore.service
     - record.service
     - cutlist.service
-    - local-monitor.service
+    - local-monitor-video.service
+    - local-monitor-audio.service
