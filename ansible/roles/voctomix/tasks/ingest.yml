@@ -21,6 +21,15 @@
     dest: /usr/bin/voctomix-ingest
     state: link
 
+- name: usb dev namer
+  ansible.builtin.template:
+    src: templates/udev_rules/71-source.rules.j2
+    dest: /etc/udev/rules.d/71-{{ item.name }}.rules
+  notify: Udev-reload
+  with_items: "{{ usb_sources }}"
+  tags:
+    - udev
+
 - name: Install ingest systemd units
   ansible.builtin.template:
     src: templates/systemd/videoteam-ingest.service.j2
