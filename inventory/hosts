@@ -1,9 +1,11 @@
 [gb]
 
-opi ansible_host=192.168.1.111
+opi ansible_host=ps1.fpgas.online ansible_port=4022
+# opi ansible_host=192.168.1.111
+
 # opi ansible_host=10.100.7.136
 
 # gb ansible_host=10.1.20.90
 # prs ansible_host=10.100.5.203
 
-pi3 ansible_host=ps1.fpgas.online ansible_port=10322
+# pi3 ansible_host=ps1.fpgas.online ansible_port=10322
