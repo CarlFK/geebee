@@ -68,8 +68,6 @@
     name: videoteam-{{ item }}
     scope: user
     enabled: true
-    daemon_reload: true
-    daemon_reexec: true
   with_items:
     - voctocore.service
     - record.service
