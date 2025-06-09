@@ -9,6 +9,7 @@ Conflicts=xlogout.target
 
 [Service]
 Type=exec
+User={{ user_name }}
 {% if recording_timezone is defined %}
 Environment=TZ={{ recording_timezone }}
 {% endif %}

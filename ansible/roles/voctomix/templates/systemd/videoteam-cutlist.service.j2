@@ -9,6 +9,7 @@ Conflicts=xlogout.target
 
 [Service]
 Type=exec
+User={{ user_name }}
 ExecStart=/usr/bin/voctomix-generate-cut-list --file=/srv/video/{{ org }}/{{ show }}/dv/{{ room_name }}/cutlist.log
 Restart=always
 RestartSec=1s

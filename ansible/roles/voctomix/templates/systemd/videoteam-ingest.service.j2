@@ -7,6 +7,7 @@ Requires=videoteam-voctocore.service
 StartLimitIntervalSec=1
 
 [Service]
+User={{ user_name }}
 ExecStart=/usr/bin/voctomix-ingest -v \
 {% if 'src' in item.1 %}
   --src '{{ item.1['src'] }}' \

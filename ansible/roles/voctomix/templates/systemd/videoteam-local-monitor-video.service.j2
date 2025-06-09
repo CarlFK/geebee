@@ -8,6 +8,7 @@ Requires=videoteam-voctocore.service
 # Conflicts=xlogout.target
 
 [Service]
+# User={{ user_name }}
 ExecStartPre=/usr/bin/sleep 4
 ExecStart=/usr/local/bin/videoteam-local-monitor-video.sh 127.0.0.1
 KillMode=mixed
@@ -17,3 +18,4 @@ RestartSec=1s
 
 [Install]
 WantedBy=default.target
+# WantedBy=graphical.target

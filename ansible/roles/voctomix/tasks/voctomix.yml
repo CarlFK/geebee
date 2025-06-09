@@ -43,49 +43,79 @@
     - record-timestamp-mp4
     - local-monitor-video.sh
     - local-monitor-audio.sh
+    - voctocore-cmds.py
 
-- name: Install voctocore systemd unit
-  ansible.builtin.copy:
-    src: files/systemd/videoteam-voctocore.{{ item }}
-    dest: /etc/systemd/user/videoteam-voctocore.{{ item }}
-  with_items:
-    - service
-  notify: Systemd-reload
+- name: Script to copy raw video files somewhere
+  ansible.builtin.template:
+    src: templates/systemd/videoteam-copy-recordings.j2
+    dest: /usr/local/bin/videoteam-copy-recordings
+    mode: "0755"
 
 - name: Install voctomix recording systemd units
   ansible.builtin.template:
     src: templates/systemd/videoteam-{{ item }}.j2
-    dest: /etc/systemd/user/videoteam-{{ item }}
+    dest: /etc/systemd/system/videoteam-{{ item }}
   with_items:
+    - voctocore.service
+    - voctocore-cmds.service
     - record.service
     - cutlist.service
-    - local-monitor-video.service
     - local-monitor-audio.service
+      # - local-monitor-video.service
   notify: Systemd-reload
 
 - name: Enable voctomix systemd units
   ansible.builtin.systemd_service:
     name: videoteam-{{ item }}
-    scope: user
     enabled: true
   with_items:
     - voctocore.service
+    - voctocore-cmds.service
     - record.service
     - cutlist.service
-    - local-monitor-video.service
     - local-monitor-audio.service
+      # - local-monitor-video.service
   tags:
     - test_voc
 
 - name: Start voctomix systemd units
   ansible.builtin.systemd_service:
     name: videoteam-{{ item }}
-    scope: user
     state: started
     daemon_reload: true
   with_items:
     - voctocore.service
+    - voctocore-cmds.service
     - record.service
     - cutlist.service
-    - local-monitor-video.service
     - local-monitor-audio.service
+      # - local-monitor-video.service
+
+- name: Install voctomix video monitor script
+  ansible.builtin.template:
+    src: templates/systemd/videoteam-{{ item }}.j2
+    dest: /etc/systemd/user/videoteam-{{ item }}
+  with_items:
+    - local-monitor-video.service
+  notify: Systemd-reload
+
+- name: Enable voctomix video systemd units
+  ansible.builtin.systemd_service:
+    name: videoteam-{{ item }}
+    scope: user
+    enabled: true
+  with_items:
+    - local-monitor-video.service
+  tags:
+    - test_one_voc
+
+- name: Start voctomix video systemd units
+  ansible.builtin.systemd_service:
+    name: videoteam-{{ item }}
+    scope: user
+    state: started
+    daemon_reload: true
+  with_items:
+    - local-monitor-video.service
+  when: false
+

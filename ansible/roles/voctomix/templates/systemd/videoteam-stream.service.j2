@@ -9,6 +9,7 @@ Conflicts=xlogout.target
 
 [Service]
 Type=exec
+User={{ user_name }}
 ExecStart=/usr/local/bin/videoteam-stream
 Restart=always
 RestartSec=1s

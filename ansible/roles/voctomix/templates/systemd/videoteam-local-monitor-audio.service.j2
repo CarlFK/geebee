@@ -6,6 +6,7 @@ After=videoteam-voctocore.service
 Requires=videoteam-voctocore.service
 
 [Service]
+User={{ user_name }}
 ExecStartPre=/usr/bin/sleep 4
 ExecStart=/usr/local/bin/videoteam-local-monitor-audio.sh 127.0.0.1 {{ audio_device }}
 KillMode=mixed

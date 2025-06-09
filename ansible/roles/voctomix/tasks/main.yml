@@ -1,4 +1,3 @@
 ---
 - {ansible.builtin.include_tasks: ingest.yml, tags: [udev,enable_sd,ingest]}
-- {ansible.builtin.include_tasks: voctomix.yml, tags: [enable_sd,test_voc]}
-- {ansible.builtin.include_tasks: scripts.yml, tags: []}
+- {ansible.builtin.include_tasks: voctomix.yml, tags: [enable_sd,test_voc,test_one_voc]}

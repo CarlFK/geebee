@@ -7,8 +7,9 @@ Requires=videoteam-voctocore.service
 
 [Service]
 Type=simple
+User={{ user_name }}
 ExecStartPre=/usr/bin/sleep 10
-ExecStart=/usr/local/bin/vidoeteam-voctocore-cmds.py
+ExecStart=/usr/local/bin/videoteam-voctocore-cmds.py
 Nice=10
 
 [Install]
