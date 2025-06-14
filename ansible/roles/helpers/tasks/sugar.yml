@@ -2,7 +2,10 @@
 
 - name: Install handy packages
   ansible.builtin.apt:
-    update_cache: yes
+    update_cache: true
+    autoclean: true
+    autoremove: true
+    allow_unauthenticated: false
     name:
       - vim
       - ack
