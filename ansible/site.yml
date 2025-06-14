@@ -1,6 +1,7 @@
 ---
 - hosts: gb
   roles:
+  - xfce-desktop
   - voctomix
   - helpers
   - sidedoor
