@@ -13,4 +13,5 @@
       - tmux
       - pmount
       - dcfldd
+      - p7zip-full
       - python3-lxml
