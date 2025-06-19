@@ -7,11 +7,13 @@
     autoremove: true
     allow_unauthenticated: false
     name:
-      - vim
       - ack
-      - git
-      - tmux
-      - pmount
       - dcfldd
+      - git
+      - nmap
       - p7zip-full
+      - pmount
       - python3-lxml
+      - telnet
+      - tmux
+      - vim
