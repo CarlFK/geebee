@@ -2,20 +2,17 @@
 
 [Unit]
 Description=Voctomix monitor video mix on local display
-After=videoteam-voctocore.service
-Requires=videoteam-voctocore.service
-# StartLimitIntervalSec=0
-# Conflicts=xlogout.target
+# After=videoteam-voctocore.service
+# Requires=videoteam-voctocore.service
 
 [Service]
 # User={{ user_name }}
 ExecStartPre=/usr/bin/sleep 4
-ExecStart=/usr/local/bin/videoteam-local-monitor-video.sh 127.0.0.1
+ExecStart=/usr/local/bin/videoteam-local-monitor-video.sh 127.0.0.1 {{ video_sink }}
 KillMode=mixed
 KillSignal=SIGINT
 Restart=always
 RestartSec=1s
 
 [Install]
-WantedBy=default.target
-# WantedBy=graphical.target
+WantedBy=xlogin.target

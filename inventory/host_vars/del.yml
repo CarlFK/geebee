@@ -1,12 +1,11 @@
 ---
-user_name: orangepi
-
 ingest_sources:
 
-  - description: "Camera and mic audio"
+  - description: "goproknock Camera and mic audio"
     name: Camera
-    video_source: "v4l2src device=/dev/video-camera0 io-mode=4 name=videosrc ! video/x-raw,format=NV12,width=1280,height=720,framerate=30/1,interlace-mode=progressive"
+    video_source: "v4l2src device=/dev/video16 ! queue max-size-time=4000000000 ! jpegdec"
     audio_source: "alsasrc device=hw:GoMic provide-clock=false slave-method=re-timestamp name=audiosrc ! audiochannelmix left-to-right=1  left-to-left=0"
+    # audio_source: "alsasrc device=hw:GoMic provide-clock=false slave-method=re-timestamp name=audiosrc ! audiochannelmix left-to-right=1  left-to-left=0"
     port: 10000
 
   - description: "HDMI grabber and grabber audio"

@@ -38,5 +38,6 @@
     update_cache: true
     autoclean: true
     autoremove: true
+    upgrade: dist
   tags:
     - rmdocker

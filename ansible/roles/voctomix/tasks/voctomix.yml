@@ -12,6 +12,19 @@
       # - gstreamer1.0-gl
       - systemd
       - vim
+      - python3-libcamera
+
+- name: fix SafeConfigParser
+  ansible.builtin.replace:
+    path: "{{ item }}"
+    regexp: SafeConfigParser
+    replace: ConfigParser
+      # regexp: '^(.*)SafeConfigParser(.*)'
+      # replace: '\1ConfigParser\2'
+  with_items:
+    - /usr/share/voctomix/voctocore/lib/config.py
+    - /usr/share/voctomix/voctogui/lib/config.py
+  when: true
 
 - name: Create voctomix config dir
   ansible.builtin.file:
@@ -74,9 +87,9 @@
     - record.service
     - cutlist.service
     - local-monitor-audio.service
-      # - local-monitor-video.service
   tags:
     - test_voc
+  when: true
 
 - name: Start voctomix systemd units
   ansible.builtin.systemd_service:
@@ -89,7 +102,7 @@
     - record.service
     - cutlist.service
     - local-monitor-audio.service
-      # - local-monitor-video.service
+  when: true
 
 - name: Install voctomix video monitor script
   ansible.builtin.template:
@@ -100,6 +113,8 @@
   notify: Systemd-reload
 
 - name: Enable voctomix video systemd units
+  become: true
+  become_user: "{{ user_name }}"
   ansible.builtin.systemd_service:
     name: videoteam-{{ item }}
     scope: user
@@ -108,6 +123,7 @@
     - local-monitor-video.service
   tags:
     - test_one_voc
+  when: true
 
 - name: Start voctomix video systemd units
   ansible.builtin.systemd_service:
@@ -117,5 +133,5 @@
     daemon_reload: true
   with_items:
     - local-monitor-video.service
-  when: false
+  when: true
 

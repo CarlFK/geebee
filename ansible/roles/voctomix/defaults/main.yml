@@ -80,3 +80,4 @@ ingest_sources:
     port: 10001
 
 audio_device: "hw:Dummy"
+video_sink: "fakevideosink"

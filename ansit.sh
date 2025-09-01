@@ -1,7 +1,7 @@
 #
 set -ex
 
-host=${1:-opi}
+host=${1:-del}
 
 # export ANSIBLE_STRATEGY=mitogen_linear
 

@@ -1,7 +1,11 @@
 [gb]
 
 # opi ansible_host=ps1.fpgas.online ansible_port=4022
-opi ansible_host=192.168.1.111
+# opi ansible_host=192.168.1.111
+#
+opi ansible_host=10.100.7.13
+del
+taco
 
 # opi ansible_host=10.100.7.136
 
