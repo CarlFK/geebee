@@ -1,4 +1,4 @@
 ---
 - name: Install mainline kernel package
   ansible.builtin.apt:
-    deb: "https://veyepar.nextdayvideo.com/temp/ansible/roles/fix7212/files/kernel/linux-image-6.17.0-rc4+_6.17.0~rc4-00047-ge6b9dce0aeeb-22_amd64.deb"
+    deb: "https://veyepar.nextdayvideo.com/temp/linux-image-6.17.0-rc4+_6.17.0~rc4-00047-ge6b9dce0aeeb-22_amd64.deb"
