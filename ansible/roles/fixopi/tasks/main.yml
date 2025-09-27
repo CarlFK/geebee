@@ -1,2 +1,3 @@
 ---
 - {ansible.builtin.include_tasks: nodocker.yml, tags: [rmdocker]}
+- {ansible.builtin.include_tasks: lcd.yml, tags: [lcd]}
