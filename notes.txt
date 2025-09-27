@@ -1,0 +1,30 @@
+GST_DEBUG=3 gst-launch-1.0 videotestsrc ! videoconvert ! videoscale ! waylandsink render-rectangle="<0,0,1920,1080>"
+https://gstreamer.freedesktop.org/documentation/waylandsink
+
+gst-launch-1.0 videotestsrc ! kmssink connector-id=77
+
+gst-launch-1.0 tcpclientsrc port=11000 ! matroskademux ! videoconvert ! fpsdisplaysink
+
+gst-launch-1.0 tcpclientsrc port=11000 ! matroskademux ! videoconvert ! waylandsink render-rectangle="<0,0,1920,1080>"
+
+videoteam@base:~$ aplay --list-devices
+# card 0: PCH [HDA Intel PCH], device 0: ALC3253 Analog [ALC3253 Analog]
+
+If its a platform device, it will appear in /dev/v4l/by-path/
+you can make udev rules, I personally use the GstDeviceMonitor and check the attributes, like USB port its connected to
+
+meson devenv -C build
+
+gst-launch-1.0 libcamerasrc camera-name="Camera 1" ! queue ! glimagesink
+
+OK so; long story short the ACPI is broken. ACPI - in case you're not aware of it - is a kind of firmware that describes the platform, all the hardware and what resources each bit has access to and so on. It's notoriously badly broken on these platform to the extent that we have multiple bits of code that exist for the sole purpose of fixing it up - hurrah.
+
+Setting the resource enforcement to lax by the way is a matter of updating /etc/default/grub with
+GRUB_CMDLINE_LINUX_DEFAULT="quiet acpi_enforce_resources=lax")
+
+git clone --depth 1 --recurse-submodules --shallow-submodules https://git.libcamera.org/libcamera/libcamera.git
+sudo apt build-dep gstreamer1.0-libcamera
+
+
+sudo apt install build-essential meson  ninja-build pkg-config     libyaml-dev python3-yaml python3-ply python3-jinja2 libgnutls28-dev libssl-dev openssl  libdw-dev libunwind-dev     libudev-dev     doxygen graphviz python3-sphinx python3-sphinxcontrib.doxylink  texlive-latex-extra     libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev     libpython3-dev pybind11-dev libevent-dev libdrm-dev libjpeg-dev libsdl2-dev libtiff-dev     libtiff-dev qt6-base-dev     libexif-dev libjpeg-dev     libevent-dev libgtest-dev     abi-compliance-checker
+
