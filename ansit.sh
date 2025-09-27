@@ -17,4 +17,4 @@ ansible-playbook \
     --vault-password-file ~/.ansible-vault \
     --user root --limit ${host} \
 
-    # --tags rmdocker
+    # --tags hostname

@@ -1,0 +1,10 @@
+---
+- name: Add a kernel parameter to GRUB_CMDLINE_LINUX
+  ansible.builtin.replace:
+      path: /etc/default/grub
+      regexp: '(^GRUB_CMDLINE_LINUX=".*)"'
+      replace: '\1 acpi_enforce_resources=lax"'
+      backup: yes
+
+- name: Update GRUB configuration
+  ansible.builtin.command: update-grub

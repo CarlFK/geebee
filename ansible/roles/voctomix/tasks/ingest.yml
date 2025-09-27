@@ -44,7 +44,7 @@
   ansible.builtin.template:
     src: templates/systemd/videoteam-ingest.path.j2
     dest: /etc/systemd/system/videoteam-ingest-{{ item.0 }}.path
-  with_indexed_items: "{{ usb_sources }}"
+  with_indexed_items: "{{ ingest_sources }}"
   notify: Systemd-reload
   tags:
     - udev

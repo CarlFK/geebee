@@ -1,0 +1,3 @@
+---
+- {ansible.builtin.include_tasks: kernel.yml, tags: [grub]}
+- {ansible.builtin.include_tasks: grub.yml, tags: [grub]}

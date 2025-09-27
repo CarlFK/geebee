@@ -1,7 +1,7 @@
 # Ansible Managed
 
 [Path]
-PathExists=/dev/{{ item.1.devname }}
+PathExists={{ item.1.path_exists }}
 
 [Install]
 WantedBy=paths.target

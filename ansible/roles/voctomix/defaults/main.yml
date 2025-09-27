@@ -1,6 +1,6 @@
 ---
 user_name: videoteam
-debian_version: bookworm
+debian_version: trixie
 
 org: debian
 show: debconf
@@ -65,19 +65,7 @@ skip_unit_test: false
 
 usb_sources: []
 
-ingest_sources:
-
-  - description: "Camera and mic audio"
-    name: Camera
-    video_source: "videotestsrc name=videosrc pattern=ball motion=hsweep animation-mode=wall-time flip=true is-live=true"
-    audio_source: "audiotestsrc wave=ticks name=audiosrc freq=330"
-    port: 10000
-
-  - description: "grabber with grabber audio"
-    video_source: "videotestsrc name=videosrc is-live=true"
-    audio_source: "audiotestsrc name=audiosrc wave=ticks freq=550"
-    name: Grabber
-    port: 10001
+ingest_sources: []
 
 audio_device: "hw:Dummy"
 video_sink: "fakevideosink"

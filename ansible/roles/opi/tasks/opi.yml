@@ -1,0 +1,78 @@
+---
+- name: Spew boot messages
+  ansible.builtin.lineinfile:
+    path: /boot/orangepiEnv.txt
+    state: present
+    regexp: '^verbosity='
+    line: 'verbosity=7'
+  tags:
+    - lcd
+
+- name: docker_optimizations=off
+  ansible.builtin.lineinfile:
+    path: /boot/orangepiEnv.txt
+    state: present
+    regexp: '^docker_optimizations='
+    line: 'docker_optimizations=off'
+  tags:
+    - lcd
+
+- name: No boot logo
+  ansible.builtin.lineinfile:
+    path: /boot/orangepiEnv.txt
+    state: present
+    regexp: '^bootlogo='
+    line: 'bootlogo=false'
+  tags:
+    - lcd
+
+- name: LCD and Camera dts
+  ansible.builtin.lineinfile:
+    path: /boot/orangepiEnv.txt
+    state: present
+    regexp: '^overlays='
+    line: 'overlays=dmc opi5ultra-cam1 opi5ultra-lcd'
+  tags:
+    - lcd
+
+- name: rotate screen concole and touch
+  ansible.builtin.lineinfile:
+    path: /boot/orangepiEnv.txt
+    state: present
+    regexp: '^extraargs='
+    line: 'extraargs=cma=128M fbcon=rotate:1'
+  tags:
+    - lcd
+
+- name: Install xfce4-settings
+  ansible.builtin.apt:
+    update_cache: yes
+    name:
+      - xfce4-settings
+
+- name: Create xfce4 config dir
+  ansible.builtin.file:
+    path: /home/{{ user_name }}/.config/xfce4/xfconf/xfce-perchannel-xml
+    state: directory
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+
+- name: rotate screen gui display
+  ansible.builtin.copy:
+    src: files/xfce4/displays.xml
+    dest: /home/{{ user_name }}/.config/xfce4/xfconf/xfce-perchannel-xml/displays.xml
+  tags:
+    - lcd
+
+- name: rotate screen again
+  community.general.xml:
+    path: /home/{{ user_name }}/.config/xfce4/xfconf/xfce-perchannel-xml/displays.xml
+    xpath: "{{ item }}"
+    attribute: "value"
+    value: "270"
+    pretty_print: true
+  with_items:
+    - "/channel[@name='displays']/property[@name='Default']/property[@name='DSI-1']/property[@name='Rotation']"
+    - "/channel[@name='displays']/property[@name='Fallback']/property[@name='DSI-1']/property[@name='Rotation']"
+  tags:
+    - lcd

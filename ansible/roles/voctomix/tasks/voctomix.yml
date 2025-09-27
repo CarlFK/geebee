@@ -6,6 +6,7 @@
       - voctomix
       - voctomix-outcasts
       - gstreamer1.0-libcamera
+      - libcamera-ipa
       - gstreamer1.0-libav
       # - gstreamer1.0-pulseaudio
       # - gstreamer1.0-pipewire
@@ -102,7 +103,7 @@
     - record.service
     - cutlist.service
     - local-monitor-audio.service
-  when: true
+  when: false
 
 - name: Install voctomix video monitor script
   ansible.builtin.template:
@@ -133,5 +134,5 @@
     daemon_reload: true
   with_items:
     - local-monitor-video.service
-  when: true
+  when: false
 

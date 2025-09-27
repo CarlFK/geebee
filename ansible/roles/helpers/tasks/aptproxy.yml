@@ -1,0 +1,5 @@
+---
+- name: Enable apt_cache
+  ansible.builtin.copy:
+    src: files/etc/apt/99proxy
+    dest: /etc/apt/apt.conf.d/99proxy
