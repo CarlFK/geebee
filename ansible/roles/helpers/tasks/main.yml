@@ -1,5 +1,5 @@
 ---
-- ansible.builtin.include_tasks: sugar.yml
+- {ansible.builtin.include_tasks: sugar.yml}
 - {ansible.builtin.include_tasks: sudoers.yml, when: true}
 - {ansible.builtin.include_tasks: hostname.yml, tags: [hostname] }
 - {ansible.builtin.include_tasks: overlayroot.yml, when: false}
