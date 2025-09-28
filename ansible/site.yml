@@ -6,10 +6,10 @@
   - voctomix
   - sidedoor
 
-- hosts: d7212
-  roles:
-  - fix7212
-
 - hosts: opi
   roles:
   - fixopi
+
+- hosts: d7212
+  roles:
+  - fix7212
