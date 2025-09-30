@@ -1,0 +1,9 @@
+---
+
+- name: bashrc display=:0
+  ansible.builtin.lineinfile:
+    path: /home/{{ user_name }}/.bashrc
+    state: present
+    line: 'export DISPLAY=:0'
+  tags:
+    - bashrc
