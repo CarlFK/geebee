@@ -1,0 +1,19 @@
+---
+- name: replace apt/sources.list with forky ver
+  ansible.builtin.copy:
+    src: files/etc/apt/debian.sources
+    dest: /etc/apt/debian.sources
+  tags:
+    - forky
+
+- name: Apt update
+  ansible.builtin.apt:
+    update_cache: true
+  tags:
+    - forky
+
+- name: Run apt-get dist-upgrade
+  ansible.builtin.apt:
+    upgrade: dist
+  tags:
+    - forky
