@@ -1,21 +1,26 @@
 ---
-ingest_sources:
+usb_sources:
 
-  - description: "front cam and built in mic"
-    name: Cam
-    path_exists: /dev/snd/controlC0
-    video_source: "libcamerasrc ! queue max-size-time=4000000000"
-    audio_source: "alsasrc device=hw:PCH provide-clock=false slave-method=re-timestamp name=audiosrc ! audiochannelmix left-to-right=1  left-to-left=0"
-    port: 10000
+  - name: mic
+    description: "Samson Technologies Corp. GoMic compact condenser mic"
+    subsystem: "sound"
+    idVendor: "17a0"
+    idProduct: "0305"
+    devname: "snd/mic"
 
-  - description: "HDMI grabber and analog grabber audio"
-    name: Grabber
-    path_exists: /dev/v4l/grabber
-    video_source: "v4l2src device=/dev/v4l/grabber name=videosrc ! queue max-size-time=4000000000 ! image/jpeg,width=1280,height=720 ! jpegdec"
-    audio_source: "alsasrc device=hw:W30 provide-clock=false slave-method=re-timestamp name=audiosrc ! audiochannelmix right-to-left=1  right-to-right=0"
-    port: 10001
+  - name: grabber
+    description: "MACROSILICON WARRKY USB 3.0"
+    subsystem: "video4linux"
+    idVendor: "345f"
+    idProduct: "2131"
+    index: 0
+    devname: "v4l/grabber"
 
-audio_device: "hw:PCH"
+  - name: wireless mic
+    description: "SmartlinkTechnology 301a:1020"
+    subsystem: "sound"
+    idVendor: "301a"
+    idProduct: "1020"
+    index: 0
+    devname: "snd/wireless"
 
-video_sink: "ximagesink"
-# video_sink: "glimagesink"

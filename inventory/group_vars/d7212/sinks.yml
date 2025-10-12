@@ -1,0 +1,6 @@
+---
+
+audio_device: "hw:PCH"
+
+video_sink: "ximagesink"
+# video_sink: "glimagesink"

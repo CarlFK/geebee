@@ -1,0 +1,17 @@
+---
+ingest_sources:
+
+  - description: "front cam and built in mic"
+    name: Cam
+    path_exists: /dev/snd/controlC0
+    video_source: "libcamerasrc ! queue max-size-time=4000000000"
+    audio_source: "alsasrc device=hw:PCH provide-clock=false slave-method=re-timestamp name=audiosrc ! audiochannelmix left-to-right=1  left-to-left=0"
+    port: 10000
+
+  - description: "HDMI grabber and analog grabber audio"
+    name: Grabber
+    path_exists: /dev/v4l/grabber
+    video_source: "v4l2src device=/dev/v4l/grabber name=videosrc ! queue max-size-time=4000000000 ! image/jpeg,width=1280,height=720 ! jpegdec"
+    audio_source: "alsasrc device=hw:W30 provide-clock=false slave-method=re-timestamp name=audiosrc ! audiochannelmix right-to-left=1  right-to-right=0"
+    port: 10001
+
