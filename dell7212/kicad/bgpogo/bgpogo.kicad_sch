@@ -4286,7 +4286,7 @@
 		(uuid "19babe65-304c-4adb-83a5-0dd9b848c5ee")
 	)
 	(label "v+"
-		(at 123.19 115.57 0)
+		(at 125.73 115.57 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4566,7 +4566,7 @@
 		(uuid "6ee4d3b3-8bf6-4ac6-ad98-60eb36dfbb22")
 	)
 	(label "v-"
-		(at 123.19 120.65 0)
+		(at 125.73 120.65 0)
 		(effects
 			(font
 				(size 1.27 1.27)
