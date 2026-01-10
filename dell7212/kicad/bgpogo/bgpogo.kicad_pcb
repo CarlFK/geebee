@@ -6494,6 +6494,50 @@
 		(layer "Edge.Cuts")
 		(uuid "056dcf54-4595-461f-929e-8bb0f969c966")
 	)
+	(gr_rect
+		(start 91.98 66.26)
+		(end 96.86 73.66)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "Edge.Cuts")
+		(uuid "19b76165-2062-4984-9f1e-7f2679d7b09e")
+	)
+	(gr_rect
+		(start 96.96 53.55)
+		(end 101.87 58.66)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "Edge.Cuts")
+		(uuid "6b882155-8fc6-433f-9ea4-795f2fc31db7")
+	)
+	(gr_rect
+		(start 91.97 103.37)
+		(end 101.84 106.58)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "Edge.Cuts")
+		(uuid "d3392775-ae10-4033-b646-c64fec1de4ff")
+	)
+	(gr_rect
+		(start 91.97 77.43)
+		(end 96.83 84.86)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "Edge.Cuts")
+		(uuid "f91f6000-3401-43fb-bceb-3443b8c7756b")
+	)
 	(gr_text "DellPogo v2.0\ngithub.com/CarlFK/geebee"
 		(at 86.92 49.01 0)
 		(layer "F.SilkS")
