@@ -2239,383 +2239,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "PJ-019:PJ-019"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "J"
-				(at -7.62 5.588 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left bottom)
-				)
-			)
-			(property "Value" "PJ-019"
-				(at -7.62 -10.16 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left bottom)
-				)
-			)
-			(property "Footprint" "libs:CUI_PJ-019"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "PARTREV" "1.05"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "STANDARD" "Manufacturer Recommendations"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "MAXIMUM_PACKAGE_HEIGHT" "11.7mm"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "MANUFACTURER" "CUI Devices"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(symbol "PJ-019_0_0"
-				(rectangle
-					(start -7.62 -7.62)
-					(end 5.08 5.08)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(arc
-					(start -4.445 0.635)
-					(mid -4.894 0.821)
-					(end -5.08 1.27)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -4.445 -0.635) (xy -3.175 -0.635)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -5.08 -1.27)
-					(mid -4.894 -0.821)
-					(end -4.445 -0.635)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.81 -3.81) (xy -4.445 -5.08)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -2.54 1.27)
-					(mid -2.726 0.821)
-					(end -3.175 0.635)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.175 0.635) (xy -4.445 0.635)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -3.175 -0.635)
-					(mid -2.726 -0.821)
-					(end -2.54 -1.27)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.175 -5.08) (xy -3.81 -3.81)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -2.54) (xy 0 -5.08)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -2.54) (xy 5.08 -2.54)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -5.08) (xy -3.175 -5.08)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -5.08) (xy 5.08 -5.08)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -5.08) (xy -0.508 -3.81) (xy 0.508 -3.81) (xy 0 -5.08)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 1.27) (xy -2.54 1.27)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 0) (xy 2.54 1.27)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 0) (xy 5.08 0)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 -1.27) (xy -2.54 -1.27)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 -1.27) (xy 2.54 0)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at 10.16 0 180)
-					(length 5.08)
-					(name "~"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 10.16 -2.54 180)
-					(length 5.08)
-					(name "~"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 10.16 -5.08 180)
-					(length 5.08)
-					(name "~"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "PJ-104H:PJ-104H"
 			(pin_names
 				(offset 1.016)
@@ -3864,16 +3487,6 @@
 	)
 	(wire
 		(pts
-			(xy 135.89 133.35) (xy 143.51 133.35)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "26930956-f6ca-44d3-993d-dd6992724858")
-	)
-	(wire
-		(pts
 			(xy 41.91 78.74) (xy 48.26 78.74)
 		)
 		(stroke
@@ -3884,7 +3497,7 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 153.67) (xy 134.62 153.67)
+			(xy 132.08 118.11) (xy 124.46 118.11)
 		)
 		(stroke
 			(width 0)
@@ -4234,16 +3847,6 @@
 	)
 	(wire
 		(pts
-			(xy 135.89 130.81) (xy 143.51 130.81)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "89eba4e7-ecf7-4fba-9c06-9108daeea6a1")
-	)
-	(wire
-		(pts
 			(xy 26.67 110.49) (xy 34.29 110.49)
 		)
 		(stroke
@@ -4464,7 +4067,7 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 156.21) (xy 134.62 156.21)
+			(xy 132.08 120.65) (xy 124.46 120.65)
 		)
 		(stroke
 			(width 0)
@@ -4491,16 +4094,6 @@
 			(type default)
 		)
 		(uuid "dc9bdb93-9a5d-42c0-8f3b-8d8794f8d4a0")
-	)
-	(wire
-		(pts
-			(xy 135.89 128.27) (xy 143.51 128.27)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e38ce485-0640-4baf-9352-eed8f60d2487")
 	)
 	(wire
 		(pts
@@ -4574,7 +4167,7 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 151.13) (xy 134.62 151.13)
+			(xy 132.08 115.57) (xy 124.46 115.57)
 		)
 		(stroke
 			(width 0)
@@ -4692,6 +4285,16 @@
 		)
 		(uuid "19babe65-304c-4adb-83a5-0dd9b848c5ee")
 	)
+	(label "v+"
+		(at 123.19 115.57 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1c7c5bb4-1fc9-4c41-8f2a-78642b38a348")
+	)
 	(label "u9"
 		(at 113.03 85.09 0)
 		(effects
@@ -4731,6 +4334,16 @@
 			(justify left bottom)
 		)
 		(uuid "2920d48b-2d23-41a6-bf64-802c8dcaf12f")
+	)
+	(label "v-"
+		(at 39.37 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "29c3d6e1-2f33-497e-b654-7a2bc6174fdd")
 	)
 	(label "58"
 		(at 109.22 80.01 0)
@@ -4952,6 +4565,16 @@
 		)
 		(uuid "6ee4d3b3-8bf6-4ac6-ad98-60eb36dfbb22")
 	)
+	(label "v-"
+		(at 123.19 120.65 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "709e80e4-5017-48e2-ab0b-39b9428151f2")
+	)
 	(label "53"
 		(at 107.95 69.85 0)
 		(effects
@@ -4961,6 +4584,16 @@
 			(justify left bottom)
 		)
 		(uuid "74bae71a-a8e8-4f8f-8e03-0b523a0fc3fe")
+	)
+	(label "v+"
+		(at 68.58 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "75052d50-a859-4925-bd1b-715c581b1f9e")
 	)
 	(label "p19"
 		(at 41.91 83.82 0)
@@ -6423,7 +6056,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x03")
-		(at 147.32 153.67 0)
+		(at 137.16 118.11 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6432,7 +6065,7 @@
 		(fields_autoplaced yes)
 		(uuid "63518310-6066-4487-8f36-ace4a58ac338")
 		(property "Reference" "J9"
-			(at 149.86 152.3999 0)
+			(at 139.7 116.8399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6441,7 +6074,7 @@
 			)
 		)
 		(property "Value" "Conn_01x03"
-			(at 149.86 154.9399 0)
+			(at 139.7 119.3799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6450,7 +6083,7 @@
 			)
 		)
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
-			(at 147.32 153.67 0)
+			(at 137.16 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6459,7 +6092,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 147.32 153.67 0)
+			(at 137.16 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6468,7 +6101,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 147.32 153.67 0)
+			(at 137.16 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7108,116 +6741,6 @@
 		)
 	)
 	(symbol
-		(lib_id "PJ-019:PJ-019")
-		(at 125.73 128.27 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "985eea23-d179-4351-9045-eb89fddb590a")
-		(property "Reference" "J4"
-			(at 124.46 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PJ-019"
-			(at 124.46 118.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "libs:CUI_PJ-019"
-			(at 124.46 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 125.73 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 125.73 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PARTREV" "1.05"
-			(at 125.73 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "STANDARD" "Manufacturer Recommendations"
-			(at 125.73 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" "11.7mm"
-			(at 125.73 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MANUFACTURER" "CUI Devices"
-			(at 125.73 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "8b3c960e-bcd8-4695-9295-bda12c22a344")
-		)
-		(pin "3"
-			(uuid "019d1844-dd6b-4335-999a-2588dd0b6c95")
-		)
-		(pin "1"
-			(uuid "1800bba0-fc9c-44fa-a443-d43ced884a3f")
-		)
-		(instances
-			(project ""
-				(path "/32687b02-412d-4c2f-95b1-54c4396d397d"
-					(reference "J4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+5V")
 		(at 101.6 26.67 0)
 		(unit 1)
@@ -7342,79 +6865,6 @@
 			(project "bgpogo"
 				(path "/32687b02-412d-4c2f-95b1-54c4396d397d"
 					(reference "H3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x03")
-		(at 148.59 130.81 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a9469721-c78d-4000-a0e6-f6fca9351365")
-		(property "Reference" "J5"
-			(at 151.13 129.5399 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Conn_01x03"
-			(at 151.13 132.0799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
-			(at 148.59 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 148.59 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 148.59 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8917b8a9-7ccd-474b-a0c0-d16d3aa514dc")
-		)
-		(pin "2"
-			(uuid "4fd44162-81c5-449c-8b26-e0d76e71b825")
-		)
-		(pin "3"
-			(uuid "7055fc2d-59a5-4317-a6d6-89915421c6da")
-		)
-		(instances
-			(project ""
-				(path "/32687b02-412d-4c2f-95b1-54c4396d397d"
-					(reference "J5")
 					(unit 1)
 				)
 			)
@@ -7830,7 +7280,7 @@
 	)
 	(symbol
 		(lib_id "PJ-104H:PJ-104H")
-		(at 124.46 153.67 0)
+		(at 114.3 118.11 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7839,7 +7289,7 @@
 		(fields_autoplaced yes)
 		(uuid "cec12737-a6b4-42e0-8b7b-f1ff8ceab529")
 		(property "Reference" "J8"
-			(at 124.46 144.78 0)
+			(at 114.3 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7847,7 +7297,7 @@
 			)
 		)
 		(property "Value" "PJ-104H"
-			(at 124.46 147.32 0)
+			(at 114.3 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7855,7 +7305,7 @@
 			)
 		)
 		(property "Footprint" "PJ_104H:SAMESKY_PJ-104H"
-			(at 124.46 153.67 0)
+			(at 114.3 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7865,7 +7315,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 124.46 153.67 0)
+			(at 114.3 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7874,7 +7324,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 124.46 153.67 0)
+			(at 114.3 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7883,7 +7333,7 @@
 			)
 		)
 		(property "PARTREV" "1.0"
-			(at 124.46 153.67 0)
+			(at 114.3 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7893,7 +7343,7 @@
 			)
 		)
 		(property "STANDARD" "Manufacturer Recommendations"
-			(at 124.46 153.67 0)
+			(at 114.3 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7903,7 +7353,7 @@
 			)
 		)
 		(property "MAXIMUM_PACKAGE_HEIGHT" "7.8mm"
-			(at 124.46 153.67 0)
+			(at 114.3 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7913,7 +7363,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Same Sky"
-			(at 124.46 153.67 0)
+			(at 114.3 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
