@@ -5232,6 +5232,70 @@
 		)
 	)
 	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 167.64 35.56 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "10688f5a-830d-4100-a3b5-2a22b5e6a35a")
+		(property "Reference" "H7"
+			(at 170.18 34.2899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 170.18 36.8299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.5mm"
+			(at 167.64 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 167.64 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 167.64 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "bgpogo"
+				(path "/32687b02-412d-4c2f-95b1-54c4396d397d"
+					(reference "H7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 109.22 90.17 0)
 		(unit 1)
@@ -5434,7 +5498,7 @@
 	)
 	(symbol
 		(lib_id "Mechanical:MountingHole")
-		(at 144.78 31.75 0)
+		(at 140.97 21.59 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -5443,7 +5507,7 @@
 		(fields_autoplaced yes)
 		(uuid "236da77f-4f32-4b3d-8c29-4a73aef7e155")
 		(property "Reference" "H1"
-			(at 147.32 30.4799 0)
+			(at 143.51 20.3199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5452,7 +5516,7 @@
 			)
 		)
 		(property "Value" "MountingHole"
-			(at 147.32 33.0199 0)
+			(at 143.51 22.8599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5461,7 +5525,7 @@
 			)
 		)
 		(property "Footprint" "MountingHole:MountingHole_2.5mm"
-			(at 144.78 31.75 0)
+			(at 140.97 21.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5470,7 +5534,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 144.78 31.75 0)
+			(at 140.97 21.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5479,7 +5543,7 @@
 			)
 		)
 		(property "Description" "Mounting Hole without connection"
-			(at 144.78 31.75 0)
+			(at 140.97 21.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5722,7 +5786,7 @@
 	)
 	(symbol
 		(lib_id "Mechanical:MountingHole")
-		(at 148.59 38.1 0)
+		(at 144.78 27.94 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -5731,7 +5795,7 @@
 		(fields_autoplaced yes)
 		(uuid "33fd6881-bdde-47d4-9704-ba7827da95f0")
 		(property "Reference" "H2"
-			(at 151.13 36.8299 0)
+			(at 147.32 26.6699 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5740,7 +5804,7 @@
 			)
 		)
 		(property "Value" "MountingHole"
-			(at 151.13 39.3699 0)
+			(at 147.32 29.2099 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5749,7 +5813,7 @@
 			)
 		)
 		(property "Footprint" "MountingHole:MountingHole_2.5mm"
-			(at 148.59 38.1 0)
+			(at 144.78 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5758,7 +5822,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 148.59 38.1 0)
+			(at 144.78 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5767,7 +5831,7 @@
 			)
 		)
 		(property "Description" "Mounting Hole without connection"
-			(at 148.59 38.1 0)
+			(at 144.78 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5915,6 +5979,70 @@
 			(project "bgpogo"
 				(path "/32687b02-412d-4c2f-95b1-54c4396d397d"
 					(reference "JP4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 163.83 20.32 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "44bd882c-e10b-4e23-ba94-da92bf122ee4")
+		(property "Reference" "H5"
+			(at 166.37 19.0499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 166.37 21.5899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.5mm"
+			(at 163.83 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 163.83 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 163.83 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "bgpogo"
+				(path "/32687b02-412d-4c2f-95b1-54c4396d397d"
+					(reference "H5")
 					(unit 1)
 				)
 			)
@@ -6199,7 +6327,7 @@
 	)
 	(symbol
 		(lib_id "Mechanical:MountingHole")
-		(at 158.75 54.61 0)
+		(at 154.94 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -6208,7 +6336,7 @@
 		(fields_autoplaced yes)
 		(uuid "6c7962b9-1d9b-48c8-b598-64ef85e4495a")
 		(property "Reference" "H4"
-			(at 161.29 53.3399 0)
+			(at 157.48 43.1799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6217,7 +6345,7 @@
 			)
 		)
 		(property "Value" "MountingHole"
-			(at 161.29 55.8799 0)
+			(at 157.48 45.7199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6226,7 +6354,7 @@
 			)
 		)
 		(property "Footprint" "MountingHole:MountingHole_2.5mm"
-			(at 158.75 54.61 0)
+			(at 154.94 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6235,7 +6363,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 158.75 54.61 0)
+			(at 154.94 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6244,7 +6372,7 @@
 			)
 		)
 		(property "Description" "Mounting Hole without connection"
-			(at 158.75 54.61 0)
+			(at 154.94 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6811,6 +6939,70 @@
 		)
 	)
 	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 167.64 26.67 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "974a5ed5-6a79-4903-b9b9-d8cd99f0a93e")
+		(property "Reference" "H6"
+			(at 170.18 25.3999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 170.18 27.9399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.5mm"
+			(at 167.64 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 167.64 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 167.64 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "bgpogo"
+				(path "/32687b02-412d-4c2f-95b1-54c4396d397d"
+					(reference "H6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+5V")
 		(at 101.6 26.67 0)
 		(unit 1)
@@ -6878,7 +7070,7 @@
 	)
 	(symbol
 		(lib_id "Mechanical:MountingHole")
-		(at 148.59 46.99 0)
+		(at 144.78 36.83 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -6887,7 +7079,7 @@
 		(fields_autoplaced yes)
 		(uuid "a5566f86-16a9-4e54-8d3d-bbfed5830ace")
 		(property "Reference" "H3"
-			(at 151.13 45.7199 0)
+			(at 147.32 35.5599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6896,7 +7088,7 @@
 			)
 		)
 		(property "Value" "MountingHole"
-			(at 151.13 48.2599 0)
+			(at 147.32 38.0999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6905,7 +7097,7 @@
 			)
 		)
 		(property "Footprint" "MountingHole:MountingHole_2.5mm"
-			(at 148.59 46.99 0)
+			(at 144.78 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6914,7 +7106,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 148.59 46.99 0)
+			(at 144.78 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6923,7 +7115,7 @@
 			)
 		)
 		(property "Description" "Mounting Hole without connection"
-			(at 148.59 46.99 0)
+			(at 144.78 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7455,6 +7647,70 @@
 			(project ""
 				(path "/32687b02-412d-4c2f-95b1-54c4396d397d"
 					(reference "J8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 177.8 43.18 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "df20229a-2f4a-4c23-a87e-33611e318d44")
+		(property "Reference" "H8"
+			(at 180.34 41.9099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 180.34 44.4499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.5mm"
+			(at 177.8 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 177.8 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 177.8 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "bgpogo"
+				(path "/32687b02-412d-4c2f-95b1-54c4396d397d"
+					(reference "H8")
 					(unit 1)
 				)
 			)
