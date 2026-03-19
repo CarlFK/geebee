@@ -1,6 +1,7 @@
 ---
 - hosts: gb
   roles:
+  - apt
   - helpers
   - xfce-desktop
   - voctomix
@@ -12,4 +13,9 @@
 
 - hosts: d7212
   roles:
+  - devices
   - fix7212
+
+- hosts: test
+  roles:
+  - apt

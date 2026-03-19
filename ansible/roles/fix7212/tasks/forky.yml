@@ -5,6 +5,7 @@
     dest: /etc/apt/debian.sources
   tags:
     - forky
+  when: false
 
 - name: Apt update
   ansible.builtin.apt:

@@ -3,17 +3,20 @@
   ansible.builtin.apt:
     update_cache: yes
     name:
-      - voctomix
+      # - voctomix
       - voctomix-outcasts
       - gstreamer1.0-libcamera
       - libcamera-ipa
       - gstreamer1.0-libav
+      - gstreamer1.0-alsa
       # - gstreamer1.0-pulseaudio
       # - gstreamer1.0-pipewire
       # - gstreamer1.0-gl
       - systemd
       - vim
       - python3-libcamera
+      - intel-media-va-driver-non-free
+      - gstreamer1.0-vaapi
 
 - name: fix SafeConfigParser
   ansible.builtin.replace:
@@ -25,7 +28,7 @@
   with_items:
     - /usr/share/voctomix/voctocore/lib/config.py
     - /usr/share/voctomix/voctogui/lib/config.py
-  when: true
+  when: false
 
 - name: Create voctomix config dir
   ansible.builtin.file:
@@ -38,6 +41,9 @@
     dest: /etc/voctomix/{{ item }}
   with_items:
     - voctocore.ini
+    - voctogui.ini
+  tags:
+    - vocto
 
 - name: Create recording directory
   ansible.builtin.file:
@@ -57,7 +63,9 @@
     - record-timestamp-mp4
     - local-monitor-video.sh
     - local-monitor-audio.sh
-    - voctocore-cmds.py
+    - stream-youtube.sh
+  tags:
+    - youtube
 
 - name: Script to copy raw video files somewhere
   ansible.builtin.template:
@@ -65,7 +73,7 @@
     dest: /usr/local/bin/videoteam-copy-recordings
     mode: "0755"
 
-- name: Install voctomix recording systemd units
+- name: Install voctomix systemd units
   ansible.builtin.template:
     src: templates/systemd/videoteam-{{ item }}.j2
     dest: /etc/systemd/system/videoteam-{{ item }}
@@ -76,7 +84,10 @@
     - cutlist.service
     - local-monitor-audio.service
       # - local-monitor-video.service
+    - stream-youtube.service
   notify: Systemd-reload
+  tags:
+    - youtube
 
 - name: Enable voctomix systemd units
   ansible.builtin.systemd_service:
@@ -88,8 +99,10 @@
     - record.service
     - cutlist.service
     - local-monitor-audio.service
+    - stream-youtube.service
   tags:
     - test_voc
+    - youtube
   when: true
 
 - name: Start voctomix systemd units
@@ -103,7 +116,10 @@
     - record.service
     - cutlist.service
     - local-monitor-audio.service
+    - stream-youtube.service
   when: false
+  tags:
+    - youtube
 
 - name: Install voctomix video monitor script
   ansible.builtin.template:

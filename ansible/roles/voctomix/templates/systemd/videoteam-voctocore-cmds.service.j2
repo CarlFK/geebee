@@ -9,7 +9,7 @@ Requires=videoteam-voctocore.service
 Type=simple
 User={{ user_name }}
 ExecStartPre=/usr/bin/sleep 10
-ExecStart=/usr/local/bin/videoteam-voctocore-cmds.py
+ExecStart=/home/videoteam/voctomix-outcasts/voctocore-cmds.py -c "set_video_a Grabber" -c "set_composite_mode picture_in_picture"
 Nice=10
 
 [Install]

@@ -1,7 +1,10 @@
 ---
+- {ansible.builtin.include_tasks: apt-sources.yml, tags: [apt] }
 - {ansible.builtin.include_tasks: sugar.yml }
-- {ansible.builtin.include_tasks: sudoers.yml, when: true }
+- {ansible.builtin.include_tasks: sudoers.yml, when: true, tags: [sudoers,] }
 - {ansible.builtin.include_tasks: hostname.yml, tags: [hostname] }
-- {ansible.builtin.include_tasks: overlayroot.yml, when: false }
-- {ansible.builtin.include_tasks: aptproxy.yml, when: true }
+- {ansible.builtin.include_tasks: overlayroot.yml, when: true }
+# - {ansible.builtin.include_tasks: aptproxy.yml, when: true }
 - {ansible.builtin.include_tasks: bashrc.yml, tags: [bashrc] }
+- {ansible.builtin.include_tasks: cam.yml, tags: [cam] }
+- {ansible.builtin.include_tasks: console.yml, tags: [console] }

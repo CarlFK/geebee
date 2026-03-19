@@ -3,3 +3,10 @@ ansible_python_interpreter: /usr/bin/python3
 
 skip_unit_test: False
 
+autoruns:
+  - { cmd: "watch df -h /srv", filename: "diskfree" }
+  - {cmd: "watch -d ls -lt /srv/video/{{org}}/{{show}}/dv/{{room_name}}/*",
+     filename: "saving"}
+  - { cmd: "htop", filename: "htop" }
+  - { cmd: "watch ip r", filename: "ipa" }
+

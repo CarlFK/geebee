@@ -10,7 +10,7 @@ Conflicts=xlogout.target
 [Service]
 Type=exec
 User={{ user_name }}
-ExecStart=/usr/local/bin/videoteam-stream
+ExecStart=/usr/local/bin/videoteam-stream-youtube.sh {{ stream_key }}
 Restart=always
 RestartSec=1s
 Nice=10

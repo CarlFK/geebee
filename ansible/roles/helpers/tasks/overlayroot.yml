@@ -10,4 +10,4 @@
     path: /etc/overlayroot.conf
     state: present
     regexp: 'overlayroot='
-    line: 'overlayroot=tmpfs'
+    line: '# overlayroot=tmpfs'

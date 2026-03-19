@@ -1,7 +1,8 @@
 #
 set -ex
 
-host=${1:-del}
+# host=${1:-del}
+host=${1:-taco}
 
 # export ANSIBLE_STRATEGY=mitogen_linear
 
@@ -9,12 +10,12 @@ host=${1:-del}
 # above will override ./ansible.cfg:
 # roles_path=
 
-
 ansible-playbook \
     ansible/site.yml \
-    -vvv \
+    -v \
     --inventory-file inventory/hosts \
     --vault-password-file ~/.ansible-vault \
     --user root --limit ${host} \
+    --tags grub --tags cam --tags apt
 
-    # --tags hostname
+#    --tags youtube
