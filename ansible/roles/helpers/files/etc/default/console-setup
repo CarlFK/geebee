@@ -1,0 +1,24 @@
+# CONFIGURATION FILE FOR SETUPCON
+
+# Consult the console-setup(5) manual page.
+
+ACTIVE_CONSOLES="/dev/tty[1-6]"
+
+CHARMAP="UTF-8"
+
+CODESET="Lat15"
+FONTFACE="Fixed"
+# FONTSIZE="8x16"
+# FONTSIZE="16x32"
+FONTSIZE="32x64"
+
+# CODESET=Ethiopian
+# FONTFACE="DejaVu" # and DejaVuBold  (sizes  30x16, 36x20, 43x24, 51x28, 59x32, 74x40, 89x48 and 118x64).
+# FONTSIZE="59x32"
+# FONTSIZE="118x64"
+
+
+VIDEOMODE=
+
+# The following is an example how to use a braille font
+# FONT='lat9w-08.psf.gz brl-8x8.psf'

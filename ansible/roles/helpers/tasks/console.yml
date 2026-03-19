@@ -1,0 +1,7 @@
+---
+- name: console big font
+  ansible.builtin.copy:
+    src: files/etc/default/console-setup
+    dest: /etc/default/console-setup
+  tags:
+    - console

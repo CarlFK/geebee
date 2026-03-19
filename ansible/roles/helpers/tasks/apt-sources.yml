@@ -1,0 +1,19 @@
+---
+- name: replace apt/sources.list with DEB822-STYLE
+  ansible.builtin.template:
+    src: templates/debian.sources.j2
+    dest: /etc/apt/sources.list.d/{{ debian_version }}.sources
+  tags:
+    - apt
+
+- name: Apt update
+  ansible.builtin.apt:
+    update_cache: true
+  tags:
+    - apt
+
+- name: Run apt-get dist-upgrade
+  ansible.builtin.apt:
+    upgrade: dist
+  tags:
+    - apt

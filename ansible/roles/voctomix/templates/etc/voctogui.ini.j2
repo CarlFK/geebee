@@ -1,0 +1,19 @@
+# {{ ansible_managed }}
+[server]
+host=localhost
+[previews]
+width=320
+;height=180
+; true = use if the server provides it
+; false = never use it
+use=true
+[mainvideo]
+playaudio=true
+[videodisplay]
+system={{ voctomix.display_system }}
+[misc]
+close=false
+cut=true
+[audio]
+volumecontrol=false
+

@@ -1,0 +1,31 @@
+---
+  # directories & code
+  - name: create voctomix directories
+    file: dest={{ item }} state=directory
+          owner=root group=root
+    with_items:
+      - /opt/voctomix2/scripts/
+      - /opt/voctomix2/release/
+
+  - name: checkout voctomix release
+    git: repo=https://c3voc.de/git/voctomix
+         dest=/opt/voctomix2/release/
+         force=yes
+         version={{ voctomix.version }}
+         accept_hostkey=yes
+
+  - name: Create a symbolic link to core
+    ansible.builtin.file:
+      src: /opt/voctomix2/release/voctocore/voctocore.py
+      dest: /usr/bin/voctocore
+      state: link
+
+  - name: Create a symbolic link to gui
+    ansible.builtin.file:
+      src: /opt/voctomix2/release/voctogui/voctogui.py
+      dest: /usr/bin/voctogui
+      state: link
+
+  - name: remove voctomix2 default config
+    file: state=absent path=/opt/voctomix2/release/voctocore/default-config.ini
+    when: false
