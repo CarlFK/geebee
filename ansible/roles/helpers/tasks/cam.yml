@@ -7,7 +7,6 @@
         # - linux-firmware # ubuntu package name
       - firmware-intel-graphics # Binary firmware for Intel iGPUs and IPUs
       - firmware-intel-misc # Binary firmware for miscellaneous Intel devices and chips
-      - firmware-nonfree
 
   tags:
     - cam
