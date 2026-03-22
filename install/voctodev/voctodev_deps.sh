@@ -1,27 +1,4 @@
-# install vu:
 
-# https://debian.griffo.io/install-latest-uv-in-debian.html
-
-curl -sS https://debian.griffo.io/EA0F721D231FDD3A0A17B9AC7808B4DD62C41256.asc | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/debian.griffo.io.gpg
-echo "deb https://debian.griffo.io/apt $(lsb_release -sc 2>/dev/null) main" | sudo tee /etc/apt/sources.list.d/debian.griffo.io.list
-sudo apt update
-sudo apt install uv
-
-# uv pipx
-sudo apt install pipx
-
-pipx ensurepath
-pipx completions
-
-pipx install uv
-
-# clone voctomix
-git clone https://github.com/voc/voctomix/
-cd voctomix
-
-uv venv --system-site-packages
-uv pip install pygobject-stubs --config-settings=config=Gtk3,Gdk3
-uv sync --dev
 
 sudo apt install \
     python3 \
@@ -49,3 +26,36 @@ sudo apt install \
     python3-dev
 
 sudo apt build-dep voctomix
+
+
+# install vu:
+
+# https://debian.griffo.io/install-latest-uv-in-debian.html
+
+curl -sS https://debian.griffo.io/EA0F721D231FDD3A0A17B9AC7808B4DD62C41256.asc | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/debian.griffo.io.gpg
+echo "deb https://debian.griffo.io/apt $(lsb_release -sc 2>/dev/null) main" | sudo tee /etc/apt/sources.list.d/debian.griffo.io.list
+sudo apt update
+sudo apt install uv
+
+# uv pipx
+sudo apt install pipx
+
+# add ~/.local/bin to PATH in .bashrc
+pipx ensurepath
+# add to current shell
+source ~/.bashrc
+
+# tab completions?
+pipx completions
+
+pipx install uv
+
+# clone voctomix
+git clone https://github.com/voc/voctomix/
+cd voctomix
+
+uv venv --system-site-packages
+uv pip install pygobject-stubs --config-settings=config=Gtk3,Gdk3
+uv sync --dev
+
+uv run -m voctocore -vv -i ../configs/2.0/minimal.ini
