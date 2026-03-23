@@ -1,4 +1,6 @@
-
+# based on stuff I found:
+# https://github.com/voc/voctomix/tree/voctomix2/voctocore#141-debian--ubuntu
+# https://github.com/voc/voctomix?tab=readme-ov-file#developer-setup
 
 sudo apt install \
     python3 \
@@ -23,7 +25,12 @@ sudo apt install \
 
 sudo apt install \
     build-essential \
-    python3-dev
+    python3-dev \
+    pkg-config \
+    cmake \
+    libcairo2-dev \
+    libgirepository-2.0-dev
+
 
 sudo apt build-dep voctomix
 
@@ -50,11 +57,15 @@ pipx completions
 
 pipx install uv
 
+
 # clone voctomix
 git clone https://github.com/voc/voctomix/
 cd voctomix
 
 uv venv --system-site-packages
+
+uv pip install pycairo pygobject
+
 uv pip install pygobject-stubs --config-settings=config=Gtk3,Gdk3
 uv sync --dev
 
