@@ -12,13 +12,12 @@ livesources={{ (ingest_sources | last).name }}
 {% for source in ingest_sources %}
 
 [source.{{ source.name }}]
-kind=test
+kind=gst
 video_source={{ source.video_source }}
 audio_source={{ source.audio_source }}
-audio.original=0+1
-
 {% endfor %}
 
+audio.original=0+1
 
 [side-by-side-equal]
 ; defaults to 1% of the video width
