@@ -14,6 +14,6 @@
     src: "templates/etc/netplan/wifi.yaml.j2"
     dest: "/etc/netplan/wifi-{{ wifi.name }}.yaml"
     mode: u+rw,g-rwx,o-rwx
-    notify: Apply Netplan
+  notify: Apply Netplan
   tags:
     - wifi

@@ -1,3 +1,5 @@
 ---
 - name: Apply Netplan
   ansible.builtin.command: netplan apply
+  tags:
+  - wifi
