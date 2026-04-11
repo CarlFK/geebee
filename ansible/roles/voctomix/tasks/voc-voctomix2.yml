@@ -8,7 +8,8 @@
       - /opt/voctomix2/release/
 
   - name: checkout voctomix release
-    git: repo=https://c3voc.de/git/voctomix
+#    git: repo=https://c3voc.de/git/voctomix
+    git: repo=https://github.com/CarlFK/voctomix
          dest=/opt/voctomix2/release/
          force=yes
          version={{ voctomix.version }}
