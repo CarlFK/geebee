@@ -4,7 +4,7 @@
     update_cache: yes
     name:
       # - voctomix
-      - voctomix-outcasts
+      # - voctomix-outcasts
       - gstreamer1.0-libcamera
       - libcamera-ipa
       - gstreamer1.0-libav
@@ -44,6 +44,7 @@
     - voctogui.ini
   tags:
     - vocto
+    - ini
 
 - name: Create recording directory
   ansible.builtin.file:
@@ -98,7 +99,7 @@
     - voctocore-cmds.service
     - record.service
     - cutlist.service
-    - local-monitor-audio.service
+# - local-monitor-audio.service
     - stream-youtube.service
   tags:
     - test_voc
@@ -115,7 +116,7 @@
     - voctocore-cmds.service
     - record.service
     - cutlist.service
-    - local-monitor-audio.service
+#   - local-monitor-audio.service
     - stream-youtube.service
   when: false
   tags:
@@ -128,6 +129,7 @@
   with_items:
     - local-monitor-video.service
   notify: Systemd-reload
+  when: true
 
 - name: Enable voctomix video systemd units
   become: true
@@ -140,7 +142,7 @@
     - local-monitor-video.service
   tags:
     - test_one_voc
-  when: true
+  when: false
 
 - name: Start voctomix video systemd units
   ansible.builtin.systemd_service:
