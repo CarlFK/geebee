@@ -1,0 +1,19 @@
+---
+
+- name: Install stuff
+  ansible.builtin.apt:
+    update_cache: yes
+    name:
+      - netplan.io
+      - netplan-generator
+  tags:
+    - wifi
+
+- name: netplan conf
+  ansible.builtin.template:
+    src: "templates/etc/netplan/wifi.yaml.j2"
+    dest: "/etc/netplan/wifi-{{ wifi.name }}.yaml"
+    mode: u+rw,g-rwx,o-rwx
+    notify: Apply Netplan
+  tags:
+    - wifi
