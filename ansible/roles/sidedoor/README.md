@@ -2,31 +2,35 @@
 
 Sidedoor - https://github.com/daradib/sidedoor
 
-Your box is your personal box, with your private key.
-Don't share your private key.
+Boxes:
+1. Your box: your personal box, with your private key.  Don't touch your private key.
+1. Jump box: public IP ssh server.
+1. Target box: The box ansible will config, deploy keys and sidedoor.service to.
+
 
 The target machine:
 - not a personal box.
 - disposable.
 - easily compromised
 - its private key isn’t very private.
-- The target box will ssh into a public server, account has limited privs.
+- The target box will ssh into a public server, account should have limited privs.
 - Now you can log in from your personal box to the target via the server.
 - You can safely deploy your public key to the target.
 
 The server machine:
 https://github.com/daradib/sidedoor?tab=readme-ov-file#recommendations
 
-NB: the remote server is not ansible managed.
-You will need securly do the following:
+NB: the remote server is not managed by this ansilbe role.
+
+You will need securly do the following (on your box or any box):
 
 1. Generate a set of keys for the target box:
 ssh-keygen -t rsa -N '' -f /tmp/id_rsa
 
-1. deploy the public key to the remote server:
-`ssh-copy-id -i /tmp/id_rsa user@example.com` (the user@host in .yml)
+1. deploy the public key to the jump box server:
+`ssh-copy-id -i /tmp/id_rsa user@example.com` (the user@host in inventory .yml)
 
-1. Vault the private key:
+1. Vault the target's private key:
 ```
 cd inventory/group_vars/all
 printf '%s\n' --- 'sd_ssh_private_key: |' > sd_ssh_private_key.yml
@@ -64,18 +68,18 @@ https://www.ssh.com/academy/ssh/tunneling-example#remote-forwarding
 
 Sidedoor variables are:
 
-* `sd_remote_user`:         User on avlaible ssh server.
+* `sd_remote_user`:         User on Jump Box.
 
-* `sd_remote_server`:       Publicly avlaible ssh server.
+* `sd_remote_server`:       Jump Box - Publicly avlaible ssh server.
 
-* `sd_remote_key`:          SSH host key of the server. (for known_hosts)
+* `sd_remote_key`:          SSH host key of the Jump Box. (dest Target /etc/sidedoor/known_hosts)
 
-* `sd_ssh_private_key`:     SSH private key to connect to the server. (saved to id-rsa)
+* `sd_ssh_private_key`:     SSH private key to connect target to the Jump Box. (dest: Target /etc/sidedoor/id_rsa)
 
-* `sd_port`:                Port on remote server to forward to local 22
-                            Thus each box needs a uniquie port.
+* `sd_port`:                Port on Jump Box to forward to target's local 22
+                            Thus each target needs a uniquie port.
 
-* `sd_more_options`:        Additional options to pass ssh
+* `sd_more_options`:        Additional options to pass Jump Box's sshd.
 
 Other variables used are:
 

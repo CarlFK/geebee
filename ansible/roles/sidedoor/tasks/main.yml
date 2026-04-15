@@ -5,11 +5,16 @@
   vars:
     packages:
       - sidedoor
+  tags:
+    - sidedoor
 
 - name: install sidedoor conf
   ansible.builtin.template:
     src: sidedoor.j2
     dest: /etc/default/sidedoor
+  tags:
+    - sidedoor
+
 
 - name: deploy sidedoor user private key
   ansible.builtin.copy:
@@ -19,6 +24,8 @@
     group: sidedoor
     mode: a-rwx,u=rw
   no_log: true
+  tags:
+    - sidedoor
 
 - name: remote server's key
   ansible.builtin.copy:
@@ -28,3 +35,5 @@
     group: sidedoor
     mode: a-rwx,u=rw
   no_log: true
+  tags:
+    - sidedoor
