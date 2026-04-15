@@ -5,5 +5,7 @@ network:
     {{ wifi.dev }}:
       dhcp4: true
       access-points:
-        "{{ wifi.ssid }}":
-          password: "{{ wifi.password }}"
+{% for ap in wifi.aps %}
+        "{{ ap.ssid }}":
+          password: "{{ ap.password }}"
+{% endfor %}

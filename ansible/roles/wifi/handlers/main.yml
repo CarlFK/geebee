@@ -1,5 +1,5 @@
 ---
 - name: Apply Netplan
-  ansible.builtin.command: netplan apply
+  ansible.builtin.command: "netplan apply /etc/netplan/wifi-{{ wifi.name }}.yaml"
   tags:
   - wifi
