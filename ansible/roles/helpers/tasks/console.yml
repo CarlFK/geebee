@@ -1,4 +1,16 @@
 ---
+- name: Install fonts
+  ansible.builtin.apt:
+    name:
+      - console-data
+      - consolefonts-bedstead
+      - fonts-ubuntu-console
+      - fonty-rg
+      - psf-unifont
+
+  tags:
+    - console
+
 - name: console big font
   ansible.builtin.copy:
     src: files/etc/default/console-setup
