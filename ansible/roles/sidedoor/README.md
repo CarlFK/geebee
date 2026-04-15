@@ -38,7 +38,7 @@ cat /tmp/id_rsa >> sd_ssh_private_key.yml
 vim sd_ssh_private_key.yml # and indent it >:
 ansible-vault encrypt --vault-password-file=~/.ansible-vault sd_ssh_private_key.yml
 ```
-
+#### ssh-keyscan
 1. Get the remote server's host key and store in inventory:
 ```
 printf "sd_remote_key: ">> sidedoor.yml
