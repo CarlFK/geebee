@@ -1,0 +1,17 @@
+---
+- name: Install ssh-import-id
+  ansible.builtin.apt:
+    name:
+      - ssh-import-id
+  tags:
+    - sshkeys
+    - sudoers
+
+- name: add ssh keys
+  become: true
+  become_user: "{{ user_name }}"
+  command: "ssh-import-id {{ item }}"
+  with_items: " {{ ssh_imports }} "
+  tags:
+    - sshkeys
+    - sudoers
