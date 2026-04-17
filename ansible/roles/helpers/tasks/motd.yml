@@ -1,0 +1,15 @@
+---
+- name: Install motd system stats dependencies
+  ansible.builtin.apt:
+    name:
+      - lsb-release
+
+- name: Motd system stats
+  ansible.builtin.copy:
+    src: files/etc/profile.d/{{ item }}
+    dest: /etc/profile.d
+  with_items:
+    - show_product.sh
+    - zz-cam-debug.sh
+  tags:
+    - motd
