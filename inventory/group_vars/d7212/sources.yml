@@ -22,5 +22,3 @@ usb_sources:
     idVendor: "301a"
     idProduct: "1020"
     devname: "snd/wireless"
-
-kernel_parameters: "acpi_enforce_resources=lax"

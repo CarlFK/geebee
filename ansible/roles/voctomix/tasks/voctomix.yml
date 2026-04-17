@@ -42,6 +42,7 @@
   with_items:
     - voctocore.ini
     - voctogui.ini
+    - vocto.cmds
   tags:
     - vocto
     - ini
@@ -76,18 +77,22 @@
 
 - name: Install voctomix systemd units
   ansible.builtin.template:
-    src: templates/systemd/videoteam-{{ item }}.j2
-    dest: /etc/systemd/system/videoteam-{{ item }}
+    src: templates/systemd/{{ item }}.j2
+    dest: /etc/systemd/system/{{ item }}
   with_items:
-    - voctocore.service
-    - voctocore-cmds.service
-    - record.service
-    - cutlist.service
-    - local-monitor-audio.service
-      # - local-monitor-video.service
-    - stream-youtube.service
+    - voctomix2-voctocore.service
+    - videoteam-voctocore-cmds.service
+
+    - voctomix2-voctogui.service
+
+    - videoteam-cutlist.service
+    - voctomix2-recording-sink.service
+
+    - videoteam-stream-youtube.service
+
   notify: Systemd-reload
   tags:
+    - sysd
     - youtube
 
 - name: Enable voctomix systemd units
@@ -104,7 +109,7 @@
   tags:
     - test_voc
     - youtube
-  when: true
+  when: False
 
 - name: Start voctomix systemd units
   ansible.builtin.systemd_service:

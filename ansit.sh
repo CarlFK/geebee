@@ -2,7 +2,8 @@
 set -ex
 
 # host=${1:-del}
-host=${1:-taco}
+# host=${1:-taco}
+host=${1:-del,taco,sparkle,harv}
 
 # export ANSIBLE_STRATEGY=mitogen_linear
 
@@ -16,6 +17,14 @@ ansible-playbook \
     --inventory-file inventory/hosts \
     --vault-password-file ~/.ansible-vault \
     --user root --limit ${host} \
-    --tags grub --tags cam --tags apt
+    --tags motd,sidedoor,cam,grub,hostname,sudoers
+
+    # --tags console,wifi
+
+    # --tags sysd,ini
+
+    # --tags ini
+
+#    --tags grub --tags cam --tags apt
 
 #    --tags youtube

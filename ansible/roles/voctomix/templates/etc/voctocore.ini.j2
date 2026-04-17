@@ -19,37 +19,26 @@ audio_source={{ source.audio_source }}
 
 audio.original=0+1
 
-[side-by-side-equal]
-; defaults to 1% of the video width
-;gutter=12
-;ypos=200
+[blinder]
+enabled=false
 
-[side-by-side-preview]
-;asize=1024x576
-;apos=12/12
-;bsize=320x180
-;bpos=948/528
+[programoutput]
+enabled = true
+videosink = {{ voctomix.programoutput.videosink }}
+audiosink = {{ voctomix.programoutput.audiosink }}
 
-[picture-in-picture]
-;pipsize=320x180
-;pippos=948/528
 
 [previews]
 ; disable if ui & server run on the same computer and can exchange uncompressed video frames
 enabled={{ voctomix.previews }}
-deinterlace=false
-
-; default to mix-videocaps, only applicable if enabled=true
-; you can change the framerate and the width/height, but nothing else
-videocaps=video/x-raw,width=640,height=360,framerate={{ voctomix.framerate | int }}/1
-
-[stream-blanker]
-enabled=false
+live=true
+videodecoder=cpu
+videoencoder=cpu
+videocodec=jpeg
+videocaps={% if voctomix.previews %}image/jpeg{% else %}video/x-raw{% endif %},width=640,height=360,framerate={{ voctomix.framerate | int }}/1
 
 [mirrors]
 enabled={{ voctomix.mirrors }}
-
-
 
 [composites]
 ; fullscreen source A (B is full transparent)
@@ -159,26 +148,26 @@ def                     = 750, * / *
 [toolbar.sources.a]
 buttons={{ ingest_sources | map(attribute="name") | join(",") }}
 
-{% for id_ in ingest_sources if not id_.name == 'slides' %}
-{{ id_.name }}.name = {{ id_.name }}
-{{ id_.name }}.key = F{{ loop.index }}
-{{ id_.name }}.tip = Select source {{ id_.name }} on channel A
+{% for source in ingest_sources if not source.name == 'slides' %}
+{{ source.name }}.name = {{ source.name }}
+{{ source.name }}.key = {{ loop.index }}
+{{ source.name }}.tip = Select source {{ source.name }} on channel B
 {% endfor %}
 
-; The default configuration uses F4 as the slides key.
+; The default configuration uses 4 as the slides key.
 slides.name = slides
-slides.key = F4
-slides.tip = Select source slides on channel A
+slides.key = 4
+slides.tip = Select source slides on channel B
+
 
 [toolbar.sources.b]
 buttons={{ ingest_sources | map(attribute="name") | join(",") }}
 
-{% for id_ in ingest_sources if not id_.name == 'slides' %}
-{{ id_.name }}.name = {{ id_.name }}
-{{ id_.name }}.key = F{{ loop.index }}
-{{ id_.name }}.tip = Select source {{ id_.name }} on channel A
+{% for source in ingest_sources if not source.name == 'slides' %}
+{{ source.name }}.name = {{ source.name }}
+{{ source.name }}.key = {{ loop.index }}
+{{ source.name }}.tip = Select source {{ source.name }} on channel B
 {% endfor %}
-
 
 ; The default configuration uses 4 as the slides key.
 slides.name = slides
@@ -237,3 +226,4 @@ update.tip    = Update current event
 
 insert.name   = INSERT
 insert.key    = i
+insert.tip    = Show or hide current insertion

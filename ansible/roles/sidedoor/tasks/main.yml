@@ -37,3 +37,11 @@
   no_log: true
   tags:
     - sidedoor
+
+- name: show sidedoor connection on console
+  ansible.builtin.lineinfile:
+    path: /etc/issue
+    state: present
+    line: 'sidedoor: ssh -p {{ sd_port }} {{ sd_remote_user}}@{{ sd_remote_server }}'
+  tags:
+    - sidedoor

@@ -15,6 +15,11 @@
   roles:
   - devices
   - fix7212
+  - wifi
+
+- hosts: bm
+  roles:
+  - blackmagic
 
 - hosts: test
   roles:

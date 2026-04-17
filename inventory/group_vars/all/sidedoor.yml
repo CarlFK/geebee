@@ -5,4 +5,5 @@ sd_remote_server: ps1.fpgas.online
 sd_port: 4022
 sd_more_options: ''
 
-sd_remote_key: "|1|tlqtgx8MqUUKrLKZrNNXcmCbI0k=|HpFdqeOHIbZDFkZP81t0tv4f//0= ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKltXc1et+xBXmJg0tRj0j7JdBW7GA3pt8srbrqLJBtl"
+sd_remote_key: "|1|bR/oY2yk36S/C/MdvA2D7c1QRb4=|BAyLDx8/Mk9Uqjr991kfAW8rDHM= ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKLhpooi/3eHTLjkeMTgWhTBG+K3T4kSO/DglmEvEzbN"
+

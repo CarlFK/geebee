@@ -4,7 +4,7 @@
     update_cache: yes
     name:
       - git
-      - voctomix-outcasts
+        # - voctomix-outcasts
 
 - name: Git checkout v-outcasts for newest ingest.py
   ansible.builtin.git:
@@ -30,6 +30,7 @@
   tags:
     - enable_sd
     - ingest
+  when: False
 
 - name: Install systemd usb_dev .path
   ansible.builtin.template:
@@ -40,6 +41,7 @@
   tags:
     - udev
     - enable_sd
+  when: False
 
 - name: Enable voctomix systemd units
   ansible.builtin.systemd_service:
@@ -51,6 +53,7 @@
   tags:
     - enable_sd
     - ingest
+  when: False
 
 - name: Enable voctomix systemd units
   ansible.builtin.systemd_service:
@@ -61,3 +64,4 @@
   tags:
     - enable_sd
     - ingest
+  when: False

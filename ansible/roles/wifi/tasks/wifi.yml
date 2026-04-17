@@ -6,6 +6,7 @@
     name:
       - netplan.io
       - netplan-generator
+      - firmware-atheros
   tags:
     - wifi
 

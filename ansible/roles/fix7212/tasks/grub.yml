@@ -1,22 +1,6 @@
 ---
 
-- name: Add a kernel parameter to GRUB_CMDLINE_LINUX
-  ansible.builtin.replace:
-      path: /etc/default/grub
-      regexp: '(^GRUB_CMDLINE_LINUX=".*)"'
-      replace: '\1 acpi_enforce_resources=lax"'
-  tags:
-    - grub
-
-- name: Add a kernel parameter to GRUB_CMDLINE_LINUX
-  ansible.builtin.replace:
-      path: /etc/default/grub
-      regexp: '(^GRUB_CMDLINE_LINUX=".*)"'
-      replace: '\1 fbcon=font:TER16x32"'
-  tags:
-    - grub
-
-- name: Add a kernel parameters to GRUB_CMDLINE_LINUX
+- name: set kernel parameters in GRUB_CMDLINE_LINUX
   ansible.builtin.lineinfile:
     path: /etc/default/grub
     state: present

@@ -7,9 +7,31 @@
         # - linux-firmware # ubuntu package name
       - firmware-intel-graphics # Binary firmware for Intel iGPUs and IPUs
       - firmware-intel-misc # Binary firmware for miscellaneous Intel devices and chips
+      - libcamera-ipa
+      - acpica-tools
+      - v4l-utils
 
   tags:
     - cam
 
         # [    4.392510] ipu3_imgu: module is from the staging directory, the quality is unknown, you have been warned.
+
+
+# [0:30:03.905850939] [2186] ERROR DmaBufAllocator dma_buf_allocator.cpp:119 Could not open any dma-buf provider
+
+- name: allow dma_buf_allocator to user
+  ansible.builtin.copy:
+    src: files/etc/udev/rules.d/99-dma-heap.rules
+    dest: /etc/udev/rules.d/99-dma-heap.rules
+  tags:
+    - cam
+
+# https://gitlab.freedesktop.org/camera/libcamera/-/raw/master/utils/libcamera-bug-report
+- name: libcamera-bug-report
+  ansible.builtin.copy:
+    src: files/scripts/libcamera-bug-report
+    dest: /usr/local/bin/libcamera-bug-report
+    mode: a+x
+  tags:
+    - cam
 

@@ -8,3 +8,4 @@
 - {ansible.builtin.include_tasks: bashrc.yml, tags: [bashrc] }
 - {ansible.builtin.include_tasks: cam.yml, tags: [cam] }
 - {ansible.builtin.include_tasks: console.yml, tags: [console] }
+- {ansible.builtin.include_tasks: motd.yml, tags: [motd] }

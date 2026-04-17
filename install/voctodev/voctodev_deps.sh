@@ -67,6 +67,8 @@ uv venv --system-site-packages
 uv pip install pycairo pygobject
 
 uv pip install pygobject-stubs --config-settings=config=Gtk3,Gdk3
+pip install pygobject
+
 uv sync --dev
 
 uv run -m voctocore -vv -i ../configs/2.0/minimal.ini

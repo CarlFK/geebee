@@ -7,7 +7,6 @@
       - fonts-ubuntu-console
       - fonty-rg
       - psf-unifont
-
   tags:
     - console
 
