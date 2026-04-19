@@ -1,0 +1,16 @@
+---
+debian_source: http://deb.debian.org/debian/
+debian_version: trixie
+debian_components: main non-free non-free-firmware
+enable_sid: false
+enable_oldstable: false
+enable_backports: True
+enable_security_upgrades: false
+enable_stable_upgrades: false
+update_apt_sources: true
+
+apt_proxy: false
+
+in_vagrant: false
+
+skip_unit_test: false

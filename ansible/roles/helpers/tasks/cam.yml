@@ -4,17 +4,30 @@
     update_cache: yes
     name:
       - libcamera-tools
-        # - linux-firmware # ubuntu package name
       - firmware-intel-graphics # Binary firmware for Intel iGPUs and IPUs
       - firmware-intel-misc # Binary firmware for miscellaneous Intel devices and chips
       - libcamera-ipa
       - acpica-tools
       - v4l-utils
-
   tags:
     - cam
 
-        # [    4.392510] ipu3_imgu: module is from the staging directory, the quality is unknown, you have been warned.
+# linux-firmware # ubuntu package name
+# firmware-intel-graphics/stable,now 20250410-2 all [installed]
+# Binary firmware for Intel iGPUs and IPUs
+# ipu3_imgu: module is from the staging directory, the quality is unknown, you have been warned.
+# linux-modules-6.19.11+deb13-amd64: /usr/lib/modules/6.19.11+deb13-amd64/kernel/drivers/staging/media/ipu3/ipu3-imgu.ko.xz
+#  libcamera-ipa
+
+- name: Install linux-image-amd64 (6.19.11+1~bpo13+1)
+  ansible.builtin.apt:
+    pkg:
+      - linux-image-amd64
+    state: latest
+    default_release: trixie-backports
+  tags:
+    - cam
+
 
 
 # [0:30:03.905850939] [2186] ERROR DmaBufAllocator dma_buf_allocator.cpp:119 Could not open any dma-buf provider

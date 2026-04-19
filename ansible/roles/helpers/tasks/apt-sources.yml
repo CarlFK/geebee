@@ -1,8 +1,35 @@
 ---
-- name: replace apt/sources.list with DEB822-STYLE
-  ansible.builtin.template:
-    src: templates/debian.sources.j2
-    dest: /etc/apt/sources.list.d/{{ debian_version }}.sources
+- name: Remove sources.list
+  ansible.builtin.file:
+    dest: /etc/apt/sources.list
+    state: absent
+  tags:
+    - apt
+
+- name: Add debian repo with key DEB822-STYLE
+  ansible.builtin.deb822_repository:
+    name: "debian-{{ debian_version }}"
+    types: deb
+    uris:
+      - "{{ debian_source }}"
+    suites:
+      - "{{ debian_version }}"
+      - "{{ debian_version }}-updates"
+      - "{{ debian_version }}-backports"
+    components: "{{ debian_components }}"
+    signed_by: /usr/share/keyrings/debian-archive-keyring.gpg
+  tags:
+    - apt
+
+- name: Add Debian stable security repository
+  ansible.builtin.deb822_repository:
+    name: "debian-security"
+    types: deb
+    uris: "http://security.debian.org/debian-security"
+    suites:
+      - "{{ debian_version }}-security"
+    components: "{{ debian_components }}"
+    signed_by: /usr/share/keyrings/debian-archive-keyring.gpg
   tags:
     - apt
 
