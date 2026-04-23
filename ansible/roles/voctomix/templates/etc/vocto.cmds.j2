@@ -1,0 +1,9 @@
+set_stream_live
+transition lec({{ ingest_sources.1.name.lower() }},{{ ingest_sources.0.name.lower() }})
+transition lec({{ ingest_sources.0.name.lower() }},{{ ingest_sources.1.name.lower() }})
+transition sbs({{ ingest_sources.1.name.lower() }},{{ ingest_sources.0.name.lower() }})
+transition sbs({{ ingest_sources.0.name.lower() }},{{ ingest_sources.1.name.lower() }})
+transition lec({{ ingest_sources.1.name.lower() }},{{ ingest_sources.0.name.lower() }})
+set_stream_blind blinder
+set_stream_live
+
