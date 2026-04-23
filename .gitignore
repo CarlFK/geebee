@@ -169,3 +169,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# KiCad
+*-backups/
+*.kicad_pcb.zip
+fp-info-cache
+~_autosave-*.kicad_pcb.lck
