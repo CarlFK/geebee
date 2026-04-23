@@ -2,7 +2,7 @@
 ingest_sources:
 
   - description: "front cam and built in mic"
-    name: Cam
+    name: cam
     path_exists: /dev/snd/controlC0
     video_source: "libcamerasrc ! videoscale ! videoconvert"
     audio_source: "alsasrc device=hw:PCH provide-clock=false slave-method=re-timestamp name=audiosrc ! audiochannelmix left-to-right=1  left-to-left=0"

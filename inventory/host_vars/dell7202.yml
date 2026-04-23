@@ -4,7 +4,7 @@ sd_port: 40159
 ingest_sources:
 
   - description: "bob Camera and built in mic audio"
-    name: Camera
+    name: camera
     path_exists: /dev/v4l/bobcam
     video_source: "v4l2src device=/dev/v4l/bobcam ! queue max-size-time=4000000000"
     audio_source: "alsasrc device=hw:PCH provide-clock=false slave-method=re-timestamp name=audiosrc ! audiochannelmix left-to-right=1  left-to-left=0"
@@ -12,7 +12,7 @@ ingest_sources:
     port: 10000
 
   - description: "HDMI grabber and grabber audio"
-    name: Grabber
+    name: grabber
     path_exists: /dev/v4l/grabber
     video_source: "v4l2src device=/dev/v4l/grabber name=videosrc ! queue max-size-time=4000000000 ! image/jpeg,width=1280,height=720 ! jpegdec"
     audio_source: "alsasrc device=hw:W30 provide-clock=false slave-method=re-timestamp name=audiosrc ! audiochannelmix right-to-left=1  right-to-right=0"

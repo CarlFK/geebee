@@ -18,18 +18,6 @@
       - intel-media-va-driver-non-free
       - gstreamer1.0-vaapi
 
-- name: fix SafeConfigParser
-  ansible.builtin.replace:
-    path: "{{ item }}"
-    regexp: SafeConfigParser
-    replace: ConfigParser
-      # regexp: '^(.*)SafeConfigParser(.*)'
-      # replace: '\1ConfigParser\2'
-  with_items:
-    - /usr/share/voctomix/voctocore/lib/config.py
-    - /usr/share/voctomix/voctogui/lib/config.py
-  when: false
-
 - name: Create voctomix config dir
   ansible.builtin.file:
     path: /etc/voctomix
@@ -68,6 +56,7 @@
     - stream-youtube.sh
   tags:
     - youtube
+    - systemd
 
 - name: Script to copy raw video files somewhere
   ansible.builtin.template:
@@ -92,7 +81,7 @@
 
   notify: Systemd-reload
   tags:
-    - sysd
+    - systemd
     - youtube
 
 - name: Enable voctomix systemd units
@@ -109,6 +98,7 @@
   tags:
     - test_voc
     - youtube
+    - systemd
   when: False
 
 - name: Start voctomix systemd units
@@ -126,6 +116,7 @@
   when: false
   tags:
     - youtube
+    - systemd
 
 - name: Install voctomix video monitor script
   ansible.builtin.template:
@@ -147,6 +138,7 @@
     - local-monitor-video.service
   tags:
     - test_one_voc
+    - systemd
   when: false
 
 - name: Start voctomix video systemd units
@@ -157,5 +149,7 @@
     daemon_reload: true
   with_items:
     - local-monitor-video.service
+  tags:
+    - systemd
   when: false
 

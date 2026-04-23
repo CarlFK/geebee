@@ -20,13 +20,16 @@
       src: /opt/voctomix2/release/voctocore/voctocore.py
       dest: /usr/bin/voctocore
       state: link
+    when: false
 
   - name: Create a symbolic link to gui
     ansible.builtin.file:
       src: /opt/voctomix2/release/voctogui/voctogui.py
       dest: /usr/bin/voctogui
       state: link
+    when: false
 
   - name: remove voctomix2 default config
-    file: state=absent path=/opt/voctomix2/release/voctocore/default-config.ini
-    when: false
+    ansible.builtin.file:
+      path: /opt/voctomix2/release/voctocore/default-config.ini
+      state: absent

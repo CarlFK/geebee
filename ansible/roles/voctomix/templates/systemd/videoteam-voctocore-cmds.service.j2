@@ -9,7 +9,7 @@ Requires=videoteam-voctocore.service
 Type=simple
 User={{ user_name }}
 ExecStartPre=/usr/bin/sleep 10
-ExecStart=/home/videoteam/voctomix-outcasts/voctocore-cmds.py -f /etc/voctomix/vocto.cmds
+ExecStart=/home/videoteam/voctomix-outcasts/voctocore-cmds.py --delay 1 -f /etc/voctomix/vocto.cmds
 Nice=10
 
 [Install]

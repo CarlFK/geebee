@@ -1,0 +1,15 @@
+---
+voctomix:
+  version: carlfk/gstsource
+  display_system: gl
+  programoutput:
+    videosink: autovideosink
+    audiosink: autoaudiosink
+  previews: false
+  mirrors: true
+  framesize: [1280,720]
+  framerate: 25
+  auto_copy_recordings: false
+  deburls: []
+
+stream_key: abc
