@@ -25,9 +25,9 @@
       - linux-image-amd64
     state: latest
     default_release: trixie-backports
+  when: forky_kernel
   tags:
     - cam
-
 
 
 # [0:30:03.905850939] [2186] ERROR DmaBufAllocator dma_buf_allocator.cpp:119 Could not open any dma-buf provider
