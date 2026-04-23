@@ -1,5 +1,4 @@
 ---
-
 - name: Install handy packages
   ansible.builtin.apt:
     update_cache: true
@@ -17,3 +16,8 @@
       - telnet
       - tmux
       - vim
+
+- name: Install more packages
+  ansible.builtin.apt:
+    allow_unauthenticated: false
+    name: {{ apt_packages }}
