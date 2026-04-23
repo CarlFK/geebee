@@ -7,6 +7,8 @@ sparkle
 harv
 d2
 h2
+blue
+
 
 [opi]
 opi1 ansible_host=192.168.1.111
@@ -19,9 +21,13 @@ sparkle
 harv
 d2
 h2
+blue
+
+[d7212mipi]
+del
+taco
 
 [bm]
 gator
 
 [test]
-sparkle
