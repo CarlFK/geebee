@@ -22,7 +22,7 @@
 - name: Install more packages
   ansible.builtin.apt:
     allow_unauthenticated: false
-    name: {{ apt_packages }}
+    name: "{{ apt_packages }}"
   tags:
     - apt
 
