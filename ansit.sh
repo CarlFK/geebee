@@ -17,7 +17,8 @@ ansible-playbook \
     --inventory-file inventory/hosts \
     --vault-password-file ~/.ansible-vault \
     --user root --limit ${host} \
-    --tags apt
+
+    # --tags apt
     # cam,
     # ,motd,console,sidedoor,cam,grub,hostname,sudoers
 

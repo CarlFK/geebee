@@ -1,0 +1,20 @@
+# lifted from cm/bundlewrap/bundles/voctocore/files/voctomix2-recording-sink.service
+# dest: /usr/local/lib/systemd/system/voctomix2-recording-sink.service
+
+[Unit]
+Description=voctomix2 recording-sink
+After=voctomix2-voctocore.service
+Requires=voctomix2-voctocore.service
+ConditionPathIsReadWrite=/srv/video/{{ org }}/{{ show }}/dv/{{ room_name }}
+
+[Service]
+User={{ user_name }}
+# Group=voc
+Type=simple
+ExecStart=/usr/local/bin/videoteam-record-mixed-av.sh /srv/video/{{ org }}/{{ show }}/dv/{{ room_name }}
+Restart=always
+RestartSec=1s
+StartLimitInterval=0
+
+[Install]
+WantedBy=voctomix2-voctocore.service

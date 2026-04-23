@@ -1,2 +1,0 @@
----
-kernel_parameters: "acpi_enforce_resources=lax fbcon=font:TER16x32"

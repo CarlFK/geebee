@@ -1,0 +1,22 @@
+# lifted from cm/bundlewrap/bundles/voctogui/files/voctomix2-voctogui.service
+
+[Unit]
+Description = voctomix2 gui
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/voctomix2/release
+Type=notify
+ExecStart=/opt/voctomix2/release/voctogui/voctogui.py -vv --ini-file /etc/voctomix/voctogui.ini
+ExecStartPost=/usr/local/bin/i3-layout.sh
+Restart=always
+RestartSec=5s
+StartLimitInterval=0
+User=mixer
+Group=mixer
+
+Environment="DISPLAY=:0"
+# Environment="GDK_SCALE=2"
+
+[Install]
+WantedBy=multi-user.target

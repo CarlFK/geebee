@@ -1,0 +1,19 @@
+# lifted from cm/bundlewrap/bundles/voctocore/files/voctomix2-voctocore.service
+# dest: /usr/local/lib/systemd/system/voctomix2-voctocore.service
+
+[Unit]
+Description=voctomix2 core
+After=network.target
+
+[Service]
+User={{ user_name }}
+; Group=voc
+Type=notify
+WorkingDirectory=/opt/voctomix2/release
+ExecStart=/opt/voctomix2/release/voctocore/voctocore.py -vv --ini-file /etc/voctomix/voctocore.ini
+Restart=always
+RestartSec=1s
+StartLimitInterval=0
+
+[Install]
+WantedBy=multi-user.target
