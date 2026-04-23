@@ -1,0 +1,55 @@
+kernel_parameters: 'netconsole="@192.168.1.120/enp0s31f6,@192.168.1.191/" intel_iommu=igfx_off # init=/bin/bash'
+
+recording_format: gst-oc
+
+usb_sources:
+
+  - name: mic
+    description: "Samson Technologies Corp. GoMic compact condenser mic 17a0:0305"
+    subsystem: "sound"
+    idVendor: "17a0"
+    idProduct: "0305"
+    devname: "snd/mic"
+
+  - name: grabber
+    description: "MACROSILICON WARRKY 345f:2131"
+    subsystem: "video4linux"
+    idVendor: "345f"
+    idProduct: "2131"
+    index: 0
+    devname: "v4l/grabber"
+
+  - name: wireless-rx
+    description: "SmartlinkTechnology 301a:1020"
+    subsystem: "sound"
+    idVendor: "301a"
+    idProduct: "1020"
+    devname: "snd/wireless"
+
+
+ingest_sources:
+
+  - description: "blackmagic hdmi video and audio"
+    name: cam1
+    path_exists: /dev/blackmagic/io0
+    video_source: "decklinkvideosrc connection=HDMI mode=720p5994 ! videoconvert ! videorate ! videoscale"
+    audio_source: "decklinkaudiosrc"
+    port: 10000
+
+  - description: "HDMI grabber and analog grabber audio"
+    name: slides
+    path_exists: /dev/v4l/grabber
+    video_source: "v4l2src device=/dev/v4l/grabber ! queue max-size-time=4000000000 ! image/jpeg,width=1280,height=720 ! jpegdec ! videoconvert ! videorate ! videoscale "
+    audio_source: "alsasrc device=hw:W30 provide-clock=false slave-method=re-timestamp ! audiochannelmix right-to-left=1  right-to-right=0"
+    port: 10001
+
+
+blackmagic_sources: True
+
+blackmagic:
+  urls:
+    desktopvideo: http://veyepar.nextdayvideo.com/bm/Blackmagic_Desktop_Video_Linux_15.3.1/deb/x86_64/desktopvideo_15.3.1a4_amd64.deb
+    desktopvideo-gui: http://veyepar.nextdayvideo.com/bm/Blackmagic_Desktop_Video_Linux_15.3.1/deb/x86_64/desktopvideo-gui_15.3.1a4_amd64.deb
+    mediaexpress: http://veyepar.nextdayvideo.com/bm/Blackmagic_Desktop_Video_Linux_15.3.1/deb/x86_64/mediaexpress_3.8.3a1_amd64.deb
+  dkms_version: 15.3.1a4
+
