@@ -17,7 +17,10 @@ ansible-playbook \
     --inventory-file inventory/hosts \
     --vault-password-file ~/.ansible-vault \
     --user root --limit ${host} \
-    --tags systemd,ini
+
+    # --tags vim
+
+    # --tags apt,systemd,ini
 
     # --tags apt
     # cam,

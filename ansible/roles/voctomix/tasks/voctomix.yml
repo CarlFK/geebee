@@ -69,13 +69,13 @@
     src: templates/systemd/{{ item }}.j2
     dest: /etc/systemd/system/{{ item }}
   with_items:
-    - voctomix2-voctocore.service
+    - videoteam-voctocore.service
     - videoteam-voctocore-cmds.service
 
     - voctomix2-voctogui.service
 
     - videoteam-cutlist.service
-    - voctomix2-recording-sink.service
+    - videoteam-record.service
 
     - videoteam-stream-youtube.service
 

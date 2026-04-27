@@ -6,7 +6,7 @@
       - git
         # - voctomix-outcasts
 
-- name: Git checkout v-outcasts for newest ingest.py
+- name: Git checkout v-outcasts for core-cmds.py
   ansible.builtin.git:
     repo: 'https://github.com/CarlFK/voctomix-outcasts.git'
     dest: "/home/{{ user_name }}/voctomix-outcasts"
@@ -20,6 +20,7 @@
     src: "/home/{{ user_name }}/voctomix-outcasts/ingest.py"
     dest: /usr/bin/voctomix-ingest
     state: link
+  when: false
 
 - name: Install ingest systemd units
   ansible.builtin.template:

@@ -6,6 +6,7 @@
   - xfce-desktop
   - voctomix
   - sidedoor
+  - vim
 
 - hosts: opi
   roles:
