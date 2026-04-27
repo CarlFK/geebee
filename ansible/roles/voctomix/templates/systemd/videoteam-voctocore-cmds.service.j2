@@ -2,15 +2,36 @@
 
 [Unit]
 Description=Voctomix startup commands
-After=videoteam-voctocore.service
+
 Requires=videoteam-voctocore.service
+Wants=videoteam-voctocore.service
+BindsTo=videoteam-voctocore.service
+PartOf=videoteam-voctocore.service
+
+After=videoteam-voctocore.service
+
+ReloadPropagatedFrom=videoteam-voctocore.service
+StopPropagatedFrom=videoteam-voctocore.service
+
+# OnSuccess=videoteam-voctocore.service
+
+# Upholds=videoteam-voctocore.service
+# Requisite=videoteam-voctocore.service
+# RequisiteOf=videoteam-voctocore.service
+
 
 [Service]
-Type=simple
+Type=oneshot
+RemainAfterExit=yes
+
 User={{ user_name }}
-ExecStartPre=/usr/bin/sleep 10
+Group={{ user_name }}
+
 ExecStart=/home/videoteam/voctomix-outcasts/voctocore-cmds.py --delay 1 -f /etc/voctomix/vocto.cmds
 Nice=10
 
 [Install]
 WantedBy=default.target
+# WantedBy=multi-user.target
+# UpheldBy=videoteam-voctocore.service
+

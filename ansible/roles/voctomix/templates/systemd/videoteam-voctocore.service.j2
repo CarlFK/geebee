@@ -1,16 +1,24 @@
-# Ansible Managed
-
+# lifted from cm/bundlewrap/bundles/voctocore/files/voctomix2-voctocore.service
+# dest: /usr/local/lib/systemd/system/voctomix2-voctocore.service
 
 [Unit]
-Description=Voctomix core Daemon
+Description=ccc voctomix core
+After=network.target
 
 [Service]
-Type=exec
 User={{ user_name }}
-ExecStart=/usr/bin/voctocore -v
+Group={{ user_name }}
+
+Type=notify
+WorkingDirectory=/opt/voctomix2/release
+ExecStart=/opt/voctomix2/release/voctocore/voctocore.py -vv --ini-file /etc/voctomix/voctocore.ini
 Restart=always
 RestartSec=1s
+StartLimitInterval=0
+
 Nice=0
+
+Environment="DISPLAY=:0"
 
 [Install]
 WantedBy=default.target
