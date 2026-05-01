@@ -1,0 +1,10 @@
+---
+
+- name: insmod vivid
+  ansible.builtin.lineinfile:
+    path: /etc/modules-load.d/vivid.conf
+    state: present
+    create: yes
+    line: vivid
+  tags:
+    - vivid
