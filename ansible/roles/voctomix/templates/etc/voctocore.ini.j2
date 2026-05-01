@@ -12,7 +12,7 @@ livesources={{ (ingest_sources | last).name }}
 {% for source in ingest_sources %}
 
 [source.{{ source.name }}]
-kind=gst
+kind={{ source.kind }}
 video_source={{ source.video_source }}
 audio_source={{ source.audio_source }}
 {% endfor %}
