@@ -4,6 +4,8 @@
 [Unit]
 Description=ccc voctomix core
 After=network.target
+After=display-manager.service
+After=graphical.target
 
 [Service]
 User={{ user_name }}
@@ -18,7 +20,9 @@ StartLimitInterval=0
 
 Nice=0
 
-Environment="DISPLAY=:0"
+Environment=DISPLAY=:0
+Environment=WAYLAND_DISPLAY=wayland-0
+# Environment=PIPEWIRE_DEBUG=3,pw.conf:5
 
 [Install]
 WantedBy=default.target
