@@ -1,11 +1,17 @@
 set_stream_live
+
 transition lec({{ ingest_sources.1.name }},{{ ingest_sources.0.name }})
 transition lec({{ ingest_sources.0.name }},{{ ingest_sources.1.name }})
+
 transition sbs({{ ingest_sources.1.name }},{{ ingest_sources.0.name }})
 transition sbs({{ ingest_sources.0.name }},{{ ingest_sources.1.name }})
-transition lec({{ ingest_sources.1.name }},{{ ingest_sources.0.name }})
+
+transition lec_43({{ ingest_sources.1.name }},{{ ingest_sources.0.name }})
+transition lec_43({{ ingest_sources.0.name }},{{ ingest_sources.1.name }})
+
 transition pip({{ ingest_sources.0.name }},{{ ingest_sources.1.name }})
 transition pip({{ ingest_sources.1.name }},{{ ingest_sources.0.name }})
+
 set_stream_blind blinder
 set_stream_live
 
