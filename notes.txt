@@ -7,6 +7,8 @@ gst-launch-1.0 tcpclientsrc port=11000 ! matroskademux ! videoconvert ! fpsdispl
 
 gst-launch-1.0 tcpclientsrc port=11000 ! matroskademux ! videoconvert ! waylandsink render-rectangle="<0,0,1920,1080>"
 
+gst-launch-1.0 audiotestsrc num-buffers=20 ! autoaudiosink
+
 videoteam@base:~$ aplay --list-devices
 # card 0: PCH [HDA Intel PCH], device 0: ALC3253 Analog [ALC3253 Analog]
 

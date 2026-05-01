@@ -4,6 +4,8 @@ ssh_imports:
     - gh:mithro
     - gh:stefanor
     - gh:bjonnh
+    - gh:h01ger
+    - gh:iiie
 
 ssh_public_keys:
     - keys:

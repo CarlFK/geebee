@@ -17,14 +17,17 @@ ansible-playbook \
     --inventory-file inventory/hosts \
     --vault-password-file ~/.ansible-vault \
     --user root --limit ${host} \
+    --tags systemd
 
-    # --tags vim
+    # --tags  motd,console,sidedoor,cam,grub,hostname,sudoers,vivid,ini
 
-    # --tags apt,systemd,ini
+
+
 
     # --tags apt
     # cam,
     # ,motd,console,sidedoor,cam,grub,hostname,sudoers
+    # --tags ini
 
     # --tags console,wifi
 

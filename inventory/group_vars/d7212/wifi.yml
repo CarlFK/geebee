@@ -1,0 +1,11 @@
+---
+wifi:
+  name: "tp"
+  dev: "wlp2s0"
+  aps:
+    - ssid: "ಠ_ಠ"
+      password: "goofymini"
+
+    - ssid: "PumpingStationOne"
+      password: "ps1frocks"
+

@@ -1,19 +1,19 @@
 ---
-ingest_sources:
+X_ingest_sources:
 
   - description: "front cam and built in mic"
     name: cam
+    kind: gst
     path_exists: /dev/snd/controlC0
     video_source: "libcamerasrc ! videoscale ! videoconvert"
     audio_source: "alsasrc device=hw:PCH provide-clock=false slave-method=re-timestamp name=audiosrc ! audiochannelmix left-to-right=1  left-to-left=0"
-    port: na
 
   - description: "HDMI grabber and analog grabber audio"
     name: slides
+    kind: gst
     path_exists: /dev/v4l/grabber
     video_source: "v4l2src device=/dev/v4l/grabber ! jpegparse ! jpegdec ! videoconvert ! videoscale ! videorate"
     audio_source: "alsasrc device=hw:W30 provide-clock=false slave-method=re-timestamp name=audiosrc ! audiochannelmix right-to-left=1  right-to-right=0"
-    port: na
 
 #  - description: "wireless mic and visulazation"
 #    name: wireless
