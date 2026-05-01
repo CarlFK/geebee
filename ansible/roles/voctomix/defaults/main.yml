@@ -70,3 +70,18 @@ ingest_sources: []
 
 audio_device: "hw:Dummy"
 video_sink: "fakevideosink"
+
+ingest_sources:
+
+  - description: "first cam and buildt in audio"
+    name: cam
+    kind: gst
+    video_source: "libcamerasrc ! videoscale ! videoconvert"
+    audio_source: "alsasrc device=hw:PCH provide-clock=false slave-method=re-timestamp"
+
+  - description: "vivi"
+    name: slides
+    kind: gst
+    video_source: "v4l2src device=/dev/v4l/by-path/platform-vivid.0-video-index0 ! videoconvert"
+    audio_source: "audiotestsrc is-live=true"
+
