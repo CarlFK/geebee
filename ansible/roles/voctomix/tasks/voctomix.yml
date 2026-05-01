@@ -17,6 +17,7 @@
       - python3-libcamera
       - intel-media-va-driver-non-free
       - gstreamer1.0-vaapi
+      - pipewire-bin
 
 - name: Create voctomix config dir
   ansible.builtin.file:
