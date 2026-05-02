@@ -15,13 +15,13 @@ Type=notify
 WorkingDirectory=/opt/voctomix2/release
 ExecStart=/opt/voctomix2/release/voctocore/voctocore.py -vv --ini-file /etc/voctomix/voctocore.ini
 Restart=always
-RestartSec=1s
+RestartSec=4s
 StartLimitInterval=0
 
 Nice=0
 
 Environment=DISPLAY=:0
-Environment=WAYLAND_DISPLAY=wayland-0
+# Environment=WAYLAND_DISPLAY=wayland-0
 # Environment=PIPEWIRE_DEBUG=3,pw.conf:5
 
 [Install]
