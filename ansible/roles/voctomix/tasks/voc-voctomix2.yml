@@ -15,6 +15,13 @@
          version={{ voctomix.version }}
          accept_hostkey=yes
 
+  - name: Run a script with arguments (using 'cmd' parameter)
+    ansible.builtin.script:
+      chdir: /opt/voctomix2/release
+      cmd: files/scripts/git_merge.sh carlfk/gstsource origin/mv_sd_notify_ready
+    tags:
+      - vocto
+
   - name: Create a symbolic link to core
     ansible.builtin.file:
       src: /opt/voctomix2/release/voctocore/voctocore.py
