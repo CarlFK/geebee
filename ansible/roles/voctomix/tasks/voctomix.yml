@@ -26,8 +26,8 @@
 
 - name: Configure voctomix
   ansible.builtin.template:
-    src: templates/etc/{{ item }}.j2
-    dest: /etc/voctomix/{{ item }}
+    src: "templates/etc/{{ item }}.j2"
+    dest: "/etc/voctomix/{{ item }}"
   with_items:
     - voctocore.ini
     - voctogui.ini
@@ -39,22 +39,22 @@
 - name: Create recording directory
   ansible.builtin.file:
     state: directory
-    dest: /srv/video/{{ org }}/{{ show }}/dv/{{ room_name }}
+    dest: "/srv/video/{{ org }}/{{ show }}/dv/{{ room_name }}"
     recurse: true
     owner: "{{ user_name }}"
     group: "{{ user_name }}"
+  tags:
+    - room_name
 
 - name: Push the static scripts
   ansible.builtin.copy:
-    src: files/systemd/videoteam-{{ item }}
-    dest: /usr/local/bin/videoteam-{{ item }}
+    src: "files/systemd/{{ item }}"
+    dest: "/usr/local/bin/{{ item }}"
     mode: "0755"
   with_items:
-    - record-timestamp-ts
-    - record-timestamp-mp4
-    - local-monitor-video.sh
-    - local-monitor-audio.sh
-    - stream-youtube.sh
+    # - videoteam-local-monitor-video.sh
+    # - videoteam-local-monitor-audio.sh
+    - videoteam-stream-youtube.sh
   tags:
     - youtube
     - systemd
@@ -64,11 +64,13 @@
     src: templates/systemd/videoteam-copy-recordings.j2
     dest: /usr/local/bin/videoteam-copy-recordings
     mode: "0755"
+  tags:
+    - room_name
 
 - name: Install voctomix systemd units
   ansible.builtin.template:
-    src: templates/systemd/{{ item }}.j2
-    dest: /etc/systemd/system/{{ item }}
+    src: "templates/systemd/{{ item }}.j2"
+    dest: "/etc/systemd/system/{{ item }}"
   with_items:
     - videoteam-voctocore.service
     - videoteam-voctocore-cmds.service
@@ -84,59 +86,61 @@
   tags:
     - systemd
     - youtube
+    - room_name
 
 - name: Enable voctomix systemd units
   ansible.builtin.systemd_service:
-    name: videoteam-{{ item }}
+    name: "{{ item }}"
     enabled: true
   with_items:
-    - voctocore.service
-    - voctocore-cmds.service
-    - record.service
-    - cutlist.service
-# - local-monitor-audio.service
-    - stream-youtube.service
+    - videoteam-voctocore.service
+    - videoteam-voctocore-cmds.service
+    - videoteam-record.service
+    - videoteam-cutlist.service
+# - videoteam-local-monitor-audio.service
+    - videoteam-stream-youtube.service
   tags:
-    - test_voc
     - youtube
     - systemd
-  when: False
+    - room_name
+  when: true
 
 - name: Start voctomix systemd units
   ansible.builtin.systemd_service:
-    name: videoteam-{{ item }}
+    name: "{{ item }}"
     state: started
     daemon_reload: true
   with_items:
-    - voctocore.service
-    - voctocore-cmds.service
-    - record.service
-    - cutlist.service
-#   - local-monitor-audio.service
-    - stream-youtube.service
+    - videoteam-voctocore.service
+    - videoteam-voctocore-cmds.service
+    - videoteam-record.service
+    - videoteam-cutlist.service
+#   - videoteam-local-monitor-audio.service
+    - videoteam-stream-youtube.service
   when: false
   tags:
     - youtube
     - systemd
+    - room_name
 
 - name: Install voctomix video monitor script
   ansible.builtin.template:
-    src: templates/systemd/videoteam-{{ item }}.j2
-    dest: /etc/systemd/user/videoteam-{{ item }}
+    src: "templates/systemd/{{ item }}.j2"
+    dest: "/etc/systemd/user/{{ item }}"
   with_items:
-    - local-monitor-video.service
+    - videoteam-local-monitor-video.service
   notify: Systemd-reload
-  when: true
+  when: false
 
 - name: Enable voctomix video systemd units
   become: true
   become_user: "{{ user_name }}"
   ansible.builtin.systemd_service:
-    name: videoteam-{{ item }}
+    name: "{{ item }}"
     scope: user
     enabled: true
   with_items:
-    - local-monitor-video.service
+    - videoteam-local-monitor-video.service
   tags:
     - test_one_voc
     - systemd
@@ -144,12 +148,12 @@
 
 - name: Start voctomix video systemd units
   ansible.builtin.systemd_service:
-    name: videoteam-{{ item }}
+    name: "{{ item }}"
     scope: user
     state: started
     daemon_reload: true
   with_items:
-    - local-monitor-video.service
+    - videoteam-local-monitor-video.service
   tags:
     - systemd
   when: false
