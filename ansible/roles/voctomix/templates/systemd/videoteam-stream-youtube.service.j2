@@ -2,15 +2,22 @@
 
 [Unit]
 Description=Voctomix live stream encoder
+
 After=videoteam-voctocore.service
 Requires=videoteam-voctocore.service
-StartLimitIntervalSec=0
+PartOf=videoteam-voctocore.service
+
 Conflicts=xlogout.target
+
+StartLimitIntervalSec=0
 
 [Service]
 Type=exec
 User={{ user_name }}
+Group={{ user_name }}
+
 ExecStart=/usr/local/bin/videoteam-stream-youtube.sh {{ stream_key }}
+
 Restart=always
 RestartSec=1s
 Nice=10

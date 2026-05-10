@@ -28,7 +28,8 @@ RemainAfterExit=yes
 User={{ user_name }}
 Group={{ user_name }}
 
-ExecStart=/home/videoteam/voctomix-outcasts/voctocore-cmds.py --delay 2.5 -f /etc/voctomix/vocto.cmds --wait-for-core
+ExecStart=/home/{{ user_name }}/voctomix-outcasts/voctocore-cmds.py -vvv --delay 2.5 \
+  -f /etc/voctomix/vocto.cmds --wait-for-core
 Nice=10
 
 [Install]

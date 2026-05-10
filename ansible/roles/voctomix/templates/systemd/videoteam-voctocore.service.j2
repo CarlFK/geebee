@@ -4,25 +4,33 @@
 [Unit]
 Description=ccc voctomix core
 After=network.target
-After=display-manager.service
-After=graphical.target
+{% if voctomix.programoutput.videosink %}
+Requires=display-manager.service
+Requires=graphical.target
+{% endif %}
 
 [Service]
-User={{ user_name }}
-Group={{ user_name }}
-
 Type=notify
-WorkingDirectory=/opt/voctomix2/release
-ExecStart=/opt/voctomix2/release/voctocore/voctocore.py -vv --ini-file /etc/voctomix/voctocore.ini
+
 Restart=always
-RestartSec=4s
+RestartSec=2s
 StartLimitInterval=0
 
-Nice=0
+User={{ user_name }}
+Group={{ user_name }}
 
 Environment=DISPLAY=:0
 # Environment=WAYLAND_DISPLAY=wayland-0
 # Environment=PIPEWIRE_DEBUG=3,pw.conf:5
+
+Nice=0
+
+{% for pre in  ExecStartPres %}
+ExecStartPre=/usr/bin/bash -c "until {{ pre }}; do sleep 1; done"
+{% endfor %}
+WorkingDirectory=/opt/voctomix2/release
+ExecStart=/opt/voctomix2/release/voctocore/voctocore.py \
+  -v --ini-file /etc/voctomix/voctocore.ini
 
 [Install]
 WantedBy=default.target
