@@ -68,6 +68,8 @@ usb_sources: []
 
 ingest_sources: []
 
+ExecStartPres: []
+
 audio_device: "hw:Dummy"
 video_sink: "fakevideosink"
 
