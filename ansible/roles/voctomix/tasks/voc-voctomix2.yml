@@ -15,7 +15,7 @@
          version={{ voctomix.version }}
          accept_hostkey=yes
 
-  - name: Run a script with arguments (using 'cmd' parameter)
+  - name: merge my 2 PRs
     ansible.builtin.script:
       chdir: /opt/voctomix2/release
       cmd: files/scripts/git_merge.sh carlfk/gstsource origin/mv_sd_notify_ready
