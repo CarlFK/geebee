@@ -3,14 +3,12 @@
 # merge a bunch of brances into main
 # good for testing pending PRs
 
-date |tee --append git_merge.log
+git config user.email "videotesam@example.com"
+git config user.name "video team"
 
-git config --global user.email "you@example.com"|tee --append git_merge.log
-git config --global user.name "Your Name"|tee --append git_merge.log
-
-git switch main |tee --append git_merge.log
+git switch main
 
 while (( "$#" )); do
-    git merge ${1}|tee --append git_merge.log
+    git merge ${1} --message="merged by ${0}"
     shift
 done
