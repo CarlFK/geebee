@@ -1,2 +1,7 @@
 sd_port: 4033
 room_name: gb
+
+ExecStartPres:
+  - "/usr/bin/gst-launch-1.0 videotestsrc num-buffers=3 ! ximagesink"
+  - "/usr/bin/gst-launch-1.0 alsasrc device=hw:W30 num-buffers=3 ! fakeaudiosink"
+
