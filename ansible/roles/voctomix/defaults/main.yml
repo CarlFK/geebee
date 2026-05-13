@@ -75,15 +75,15 @@ video_sink: "fakevideosink"
 
 ingest_sources:
 
-  - description: "first cam and buildt in audio"
+  - description: "sweep and beep"
     name: cam
     kind: gst
-    video_source: "libcamerasrc ! videoscale ! videoconvert"
-    audio_source: "alsasrc device=hw:PCH provide-clock=false slave-method=re-timestamp"
+    video_source: "videotestsrc pattern=ball motion=hsweep animation-mode=wall-time flip=true is-live=true"
+    audio_source: "audiotestsrc wave=ticks freq=330"
 
-  - description: "vivi"
+  - description: "vivi and white noise"
     name: slides
     kind: gst
     video_source: "v4l2src device=/dev/v4l/by-path/platform-vivid.0-video-index0 ! videoconvert"
-    audio_source: "audiotestsrc is-live=true"
+    audio_source: "audiotestsrc wave=white-noise is-live=true"
 
