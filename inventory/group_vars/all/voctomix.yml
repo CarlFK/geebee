@@ -4,8 +4,8 @@ voctomix:
     # version: mv_sd_notify_ready
   display_system: gl
   programoutput:
-    # videosink: autovideosink
-    videosink: "videoconvert ! ximagesink"
+    videosink: autovideosink
+    # videosink: "videoconvert ! ximagesink"
     audiosink: autoaudiosink
   previews: false
   mirrors: true

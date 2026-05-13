@@ -10,3 +10,4 @@ autoruns:
   - { cmd: "htop", filename: "htop" }
   - { cmd: "watch ip r", filename: "ipa" }
 
+foo: [1,2,3]
