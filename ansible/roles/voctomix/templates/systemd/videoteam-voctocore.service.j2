@@ -30,7 +30,7 @@ ExecStartPre=/usr/bin/bash -c "until {{ pre }}; do sleep 1; done"
 {% endfor %}
 WorkingDirectory=/opt/voctomix2/release
 ExecStart=/opt/voctomix2/release/voctocore/voctocore.py \
-  -v --ini-file /etc/voctomix/voctocore.ini
+  -vv --ini-file /etc/voctomix/voctocore.ini
 
 [Install]
 WantedBy=default.target
