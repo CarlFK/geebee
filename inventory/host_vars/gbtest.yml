@@ -25,3 +25,5 @@ grub_settings:
   - [GRUB_CMDLINE_LINUX, "fbcon=font:TER16x32 console=tty0 console=ttyS0,115200n8"]
   - [GRUB_GFXPAYLOAD_LINUX, text]
   - [GRUB_GFXMODE, 640x480]
+  - [GRUB_TERMINAL, serial]
+  - [GRUB_SERIAL_COMMAND, "serial --unit=0 --speed=115200 --word=8 --parity=no --stop=1"]

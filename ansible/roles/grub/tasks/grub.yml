@@ -1,0 +1,13 @@
+---
+
+- name: set etc/default/grub settings
+  ansible.builtin.lineinfile:
+    path: /etc/default/grub
+    state: present
+    regexp: '^{{ item.0 }}='
+    line: '{{ item.0 }}="{{ item.1}}"'
+  loop: "{{ grub_settings }}"
+
+  notify: Update GRUB configuration
+  tags:
+    - grub

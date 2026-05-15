@@ -7,6 +7,7 @@
   - voctomix
   - sidedoor
   - vim
+  - grub
 
 - hosts: opi
   roles:
