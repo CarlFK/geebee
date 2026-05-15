@@ -7,7 +7,7 @@ ExecStartPres:
 #  - "/usr/bin/gst-launch-1.0 alsasrc device=hw:W30 num-buffers=3 ! fakeaudiosink"
 
 voctomix:
-  version: bugfix/falbacksrc
+  version: main
   display_system: gl
   programoutput:
     videosink: autovideosink
@@ -21,4 +21,7 @@ voctomix:
   auto_copy_recordings: false
   deburls: []
 
-kernel_parameters: "console=tty0 console=ttyS0,115200n8"
+grub_settings:
+  - [GRUB_CMDLINE_LINUX, "fbcon=font:TER16x32 console=tty0 console=ttyS0,115200n8"]
+  - [GRUB_GFXPAYLOAD_LINUX, text]
+  - [GRUB_GFXMODE, 640x480]
