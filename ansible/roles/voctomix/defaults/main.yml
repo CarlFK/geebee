@@ -66,8 +66,6 @@ skip_unit_test: false
 
 usb_sources: []
 
-ingest_sources: []
-
 ExecStartPres: []
 
 audio_device: "hw:Dummy"
