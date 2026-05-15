@@ -4,13 +4,14 @@ room_name: gb
 ExecStartPres:
   - "/usr/bin/gst-launch-1.0 videotestsrc num-buffers=3 ! ximagesink"
 
-;  - "/usr/bin/gst-launch-1.0 alsasrc device=hw:W30 num-buffers=3 ! fakeaudiosink"
+#  - "/usr/bin/gst-launch-1.0 alsasrc device=hw:W30 num-buffers=3 ! fakeaudiosink"
 
 voctomix:
   version: bugfix/falbacksrc
   display_system: gl
   programoutput:
     videosink: autovideosink
+    audiosink: fakeaudiosink
     # videosink: "videoconvert ! ximagesink"
     # audiosink: autoaudiosink
   previews: false
