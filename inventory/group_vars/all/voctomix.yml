@@ -1,7 +1,6 @@
 ---
 voctomix:
-  version: carlfk/gstsource
-    # version: mv_sd_notify_ready
+  version: bugfix/falbacksrc
   display_system: gl
   programoutput:
     videosink: autovideosink

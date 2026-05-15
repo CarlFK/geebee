@@ -8,7 +8,8 @@
       - /opt/voctomix2/release/
 
   - name: checkout voctomix release
-#    git: repo=https://c3voc.de/git/voctomix
+  # git: repo=https://c3voc.de/git/voctomix
+  # git: repo=https://github.com/voc/voctomix/
     git: repo=https://github.com/CarlFK/voctomix
          dest=/opt/voctomix2/release/
          force=yes
@@ -21,6 +22,7 @@
       cmd: files/scripts/git_merge.sh carlfk/gstsource origin/mv_sd_notify_ready
     tags:
       - vocto
+    when: false
 
   - name: Create a symbolic link to core
     ansible.builtin.file:
