@@ -21,4 +21,4 @@ voctomix:
   auto_copy_recordings: false
   deburls: []
 
-
+kernel_parameters: "console=tty0 console=ttyS0,115200n8"
