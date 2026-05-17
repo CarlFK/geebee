@@ -1,0 +1,6 @@
+---
+- name: Update GRUB configuration
+  ansible.builtin.command: update-grub
+  tags:
+    - grub
+

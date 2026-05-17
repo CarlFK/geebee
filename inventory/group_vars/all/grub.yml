@@ -1,4 +1,0 @@
----
-kernel_parameters: "fbcon=font:TER16x32"
-forky_kernel: false
-
