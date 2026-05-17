@@ -4,6 +4,21 @@ sd_port: 4032
 
 room_name: gator
 
+voctomix:
+  version: bugfix/falbacksrc
+  display_system: gl
+  programoutput:
+    videosink: autovideosink
+    # videosink: "videoconvert ! ximagesink"
+    audiosink: autoaudiosink
+  previews: false
+  mirrors: true
+  framesize: [1280,720]
+  framerate: 25
+  audio_channels: 4
+  auto_copy_recordings: false
+  deburls: []
+
 usb_sources:
 
   - name: mic
@@ -35,10 +50,8 @@ ingest_sources:
     name: cam1
     path_exists: /dev/blackmagic/io0
     kind: gst
-  # video_source: "decklinkvideosrc connection=HDMI mode=720p5994 ! videoconvert ! videorate ! videoscale"
-  # audio_source: "decklinkaudiosrc"
-    video_source: "v4l2src device=/dev/v4l/by-path/platform-vivid.0-video-index0 ! videoconvert"
-    audio_source: "audiotestsrc is-live=true"
+    video_source: "decklinkvideosrc device-number=0 connection=HDMI mode=720p5994 ! videoconvert ! videorate ! videoscale"
+    audio_source: "decklinkaudiosrc device-number=0"
 
   - description: "HDMI grabber and analog grabber audio"
     name: slides
@@ -47,6 +60,13 @@ ingest_sources:
     video_source: "v4l2src device=/dev/v4l/grabber ! queue max-size-time=4000000000 ! image/jpeg,width=1280,height=720 ! jpegdec ! videoconvert ! videorate ! videoscale "
     audio_source: "alsasrc device=hw:W30 provide-clock=false slave-method=re-timestamp ! audiochannelmix right-to-left=1  right-to-right=0"
 
+
+vocto:
+  kind: decklink
+  devicenumber: 0
+  video_mode: 720p5994
+  video_connection: HDMI
+  video_format: auto
 
 ExecStartPres:
   - "/usr/bin/gst-launch-1.0 videotestsrc num-buffers=3 ! ximagesink"

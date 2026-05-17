@@ -4,7 +4,7 @@
 [mix]
 videocaps=video/x-raw,format=I420,width={{ voctomix.framesize.0 }},height={{ voctomix.framesize.1 }},framerate={{ voctomix.framerate | int }}/1,pixel-aspect-ratio=1/1,interlace-mode=progressive,colorimetry=bt709
 
-audiocaps=audio/x-raw,format=S16LE,channels=2,layout=interleaved,rate=48000
+audiocaps=audio/x-raw,format=S16LE,channels={{ voctomix.audio_channels }},layout=interleaved,rate=48000
 
 sources={{ ingest_sources | map(attribute="name") | join(",") }}
 livesources={{ (ingest_sources | last).name }}
@@ -15,9 +15,9 @@ livesources={{ (ingest_sources | last).name }}
 kind={{ source.kind }}
 video_source={{ source.video_source }}
 audio_source={{ source.audio_source }}
+audio.original=0+1
 {% endfor %}
 
-audio.original=0+1
 
 [blinder]
 enabled=false

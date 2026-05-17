@@ -10,6 +10,7 @@ voctomix:
   mirrors: true
   framesize: [1280,720]
   framerate: 25
+  audio_channels: 2
   auto_copy_recordings: false
   deburls: []
 

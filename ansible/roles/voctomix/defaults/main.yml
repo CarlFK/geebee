@@ -17,6 +17,7 @@ voctomix:
   version: "main"
   display_system: gl
   framerate: "{{ frequency / 2 }}"
+  audio_channels: 2
   previews: true
   mirrors: false
   auto_copy_recordings: true

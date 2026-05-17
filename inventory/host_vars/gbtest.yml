@@ -12,12 +12,11 @@ voctomix:
   programoutput:
     videosink: autovideosink
     audiosink: fakeaudiosink
-    # videosink: "videoconvert ! ximagesink"
-    # audiosink: autoaudiosink
   previews: false
   mirrors: true
   framesize: [1280,720]
   framerate: 25
+  audio_channels: 6
   auto_copy_recordings: false
   deburls: []
 
