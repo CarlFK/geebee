@@ -75,7 +75,7 @@
     - videoteam-voctocore.service
     - videoteam-voctocore-cmds.service
 
-    - voctomix2-voctogui.service
+    - videoteam-voctogui.service
 
     - videoteam-cutlist.service
     - videoteam-record.service
@@ -95,6 +95,7 @@
   with_items:
     - videoteam-voctocore.service
     - videoteam-voctocore-cmds.service
+    - videoteam-voctogui.service
     - videoteam-record.service
     - videoteam-cutlist.service
 # - videoteam-local-monitor-audio.service

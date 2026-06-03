@@ -1,0 +1,26 @@
+# lifted from
+# https://forgejo.c3voc.de/voc/cm/src/branch/master/bundlewrap/bundles/voctogui/files/voctomix2-voctogui.service
+
+[Unit]
+Description = voctomix2 gui
+After=network.target
+
+[Service]
+Type=notify
+
+Environment="DISPLAY=:0"
+# Environment="GDK_SCALE=2"
+
+WorkingDirectory=/opt/voctomix2/release
+
+ExecStart=/opt/voctomix2/release/voctogui/voctogui.py -vv --ini-file /etc/voctomix/voctogui.ini
+
+Restart=always
+RestartSec=5s
+StartLimitInterval=0
+
+User={{ user_name }}
+Group={{ user_name }}
+
+[Install]
+WantedBy=multi-user.target
