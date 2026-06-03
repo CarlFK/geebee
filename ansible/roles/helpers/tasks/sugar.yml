@@ -18,6 +18,7 @@
       - vim
       - xfce4-screenshooter
       - imagemagick
+      - gstreamer1.0-plugins-base-apps
   tags:
     - apt
 
