@@ -40,8 +40,11 @@
 
 - name: show sidedoor connection on console
   ansible.builtin.lineinfile:
-    path: /etc/issue
+    path: "{{ item }}"
     state: present
     line: 'sidedoor: ssh -p {{ sd_port }} {{ sd_remote_user}}@{{ sd_remote_server }}'
+  with_items:
+    - /etc/issue
+    - /etc/motd
   tags:
     - sidedoor
