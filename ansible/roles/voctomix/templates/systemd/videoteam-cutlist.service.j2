@@ -7,12 +7,22 @@ Requires=videoteam-voctocore.service
 StartLimitIntervalSec=0
 Conflicts=xlogout.target
 
+ConditionPathIsReadWrite=/srv/video/{{ org }}/{{ show }}/dv/{{ room_name }}
+
 [Service]
-Type=exec
 User={{ user_name }}
-ExecStart=/usr/bin/voctomix-generate-cut-list --file=/srv/video/{{ org }}/{{ show }}/dv/{{ room_name }}/cutlist.log
+Group={{ user_name }}
+Type=exec
+
+ExecStart=/home/{{ user_name }}/voctomix-outcasts/generate-cut-list.py \
+  --file=/srv/video/{{ org }}/{{ show }}/dv/{{ room_name }}/cutlist.log
+
+KillMode=mixed
+KillSignal=SIGINT
+
 Restart=always
 RestartSec=1s
+StartLimitInterval=0
 
 [Install]
 WantedBy=default.target
