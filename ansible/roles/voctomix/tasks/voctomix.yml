@@ -18,6 +18,7 @@
       - intel-media-va-driver-non-free
       - gstreamer1.0-vaapi
       - pipewire-bin
+      - python3-prometheus-client
 
 - name: Create voctomix config dir
   ansible.builtin.file:
