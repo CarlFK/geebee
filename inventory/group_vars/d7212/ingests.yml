@@ -13,7 +13,8 @@ ingest_sources:
     name: slides
     kind: gst
     path_exists: /dev/v4l/grabber
-    video_source: "v4l2src device=/dev/v4l/grabber ! jpegparse ! jpegdec ! videoconvert ! videoscale ! videorate"
+    video_source: "v4l2src device=/dev/v4l/grabber ! video/x-raw,format=YUY2,width=1280,height=720 ! videoconvert ! videorate"
+    mjpg_video_source: "v4l2src device=/dev/v4l/grabber ! image/jpeg,width=1280,height=720 ! jpegparse ! jpegdec ! videoconvert ! videoscale ! videorate"
     audio_source: "alsasrc device=hw:W30 provide-clock=false slave-method=re-timestamp"
     audio.slides: 0+1
 
