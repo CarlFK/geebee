@@ -5,6 +5,7 @@
   vars:
     packages:
       - sidedoor
+      - sidedoor-sudo
   tags:
     - sidedoor
 
