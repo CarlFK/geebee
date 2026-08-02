@@ -19,6 +19,7 @@
       - gstreamer1.0-vaapi
       - pipewire-bin
       - python3-prometheus-client
+      - wmctrl
 
 - name: Create voctomix config dir
   ansible.builtin.file:
