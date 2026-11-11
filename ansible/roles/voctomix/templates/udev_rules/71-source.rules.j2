@@ -1,5 +1,7 @@
 # /etc/udev/rules.d/71-usb_source.rules
 
+# description: {{ description }}
+
 # SUBSYSTEM=="{{ item.subsystem }}", ATTRS{idVendor}=="{{ item.idVendor }}", ATTRS{idProduct}=="{{ item.idProduct }}", ATTR{index}=="0", SYMLINK+="{{ item.devname }}"
 
 SUBSYSTEM=="{{ item.subsystem }}", \
